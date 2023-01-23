@@ -1,0 +1,76 @@
+#pragma once
+typedef vector<uchar> vector_uchar;
+typedef vector<int> vector_int;
+typedef vector<float> vector_float;
+typedef vector<double> vector_double;
+typedef vector<Point> vector_Point;
+typedef vector<Point2f> vector_Point2f;
+typedef vector<Vec4f> vector_Vec4f;
+typedef vector<Vec6f> vector_Vec6f;
+typedef vector<Rect> vector_Rect;
+typedef vector<KeyPoint> vector_KeyPoint;
+typedef vector<Mat> vector_Mat;
+typedef vector<DMatch> vector_DMatch;
+typedef vector<string> vector_string;
+typedef vector<vector<Point> > vector_vector_Point;
+typedef vector<vector<Point2f> > vector_vector_Point2f;
+typedef vector<vector<DMatch> > vector_vector_DMatch;
+
+typedef Ptr<Algorithm> Ptr_Algorithm;
+typedef Ptr<Feature2D> Ptr_Feature2D; 
+typedef Ptr<FaceRecognizer> Ptr_FaceRecognizer; 
+typedef Ptr<CLAHE> Ptr_CLAHE;  
+typedef Ptr<FeatureDetector> Ptr_FeatureDetector;
+typedef Ptr<DescriptorExtractor> Ptr_DescriptorExtractor;
+typedef Ptr<DescriptorMatcher> Ptr_DescriptorMatcher;
+typedef Ptr<flann::IndexParams> Ptr_flann_IndexParams;
+typedef Ptr<flann::SearchParams> Ptr_flann_SearchParams;
+
+typedef SimpleBlobDetector::Params SimpleBlobDetector_Params;
+
+typedef cvflann::flann_distance_t cvflann_flann_distance_t;
+typedef cvflann::flann_algorithm_t cvflann_flann_algorithm_t;
+
+typedef char*  c_string;
+struct Mat_t; 
+struct string_t; 
+struct Point2f_t; 
+struct Point2d_t; 
+struct Point_t; 
+struct Size_t; 
+struct Rect_t; 
+struct Range_t; 
+struct CvSlice_t; 
+struct Vec2d_t; 
+struct Vec3b_t; 
+struct Vec3d_t; 
+struct Vec4f_t; 
+struct Vec6f_t; 
+struct Scalar_t; 
+struct RotatedRect_t; 
+struct Filenode_t; 
+struct TermCriteria_t; 
+struct CvTermCriteria_t; 
+struct CvDTreeNode_t; 
+struct Moments_t; 
+struct IndexParams_t; 
+struct SearchParams_t; 
+struct CvPoint2fS;
+struct CvPoint2dS;
+struct CvPointS;
+struct CvSizeS;
+struct CvRectS;
+struct CvRangeS;
+struct CvSliceS;
+struct CvVec2dS; 
+struct CvVec3dS; 
+struct CvVec3bS; 
+struct CvVec4fS; 
+struct CvVec6fS; 
+struct CvScalarS; 
+struct CvRotatedRectS; 
+struct CvFileNodeS;
+struct CvTermCriteriaS;
+struct CvDTreeNodeS;
+struct CvMomentsS;
+
