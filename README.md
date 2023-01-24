@@ -62,6 +62,36 @@ For example, for Ptr_Feature2d type there is a pCvPtr_Feature2dConvert function,
 returns a pointer to a fresh Feature2d_t binding struct. When calling a method of Feature2D class (example: pCvFeature2dcompute) 
 you will use the binding struct as first parameter, not the original Ptr.
   
+# Installation (Windows)
+
+Download Opencv version 2.4.13.6 from https://sourceforge.net/projects/opencvlibrary/files/opencv-win/2.4.13/opencv-2.4.13.6-vc14.exe/download
+
+Install Opencv, and add in Windows path the directory with Opencv DLL (for example: C:\opencv2.4.13.6\build\x86\vc14\bin):
+
+  set path=C:\opencv2.4.13.6\build\x86\vc14\bin;%path%
+
+Download this repository and add in Windows path the directory with ocvWrapper.dll (note: for now there is only the 32 bit binary DLL).
+If you have copied repository in C:\ocvWrapper, then:
+
+  set path=C:\ocvWrapper\bin\Release\x86
+
+Now Opencv and ocvWrapper can be used from programs.
+
+# Example programs
+
+- testKNN: a pure C program that use the K Nearest Neighbors class from Machine Learning module (ML)
+
+- testPCA: a Delphi program for testing the PCA class from ML module
+
+- testSVM: a Delphi program for testing CvSVM class from ML module
+
+- motionTest: a Delphi demo program for motion tracking
+
+- featureTest: a Delphi demo program for ORB feature detector class and matching between images
+
+- cascadeTest: a Delphi demo program for face recognition on webcam, by cascade classifier class
+
+- datamatrixTest: a Delphi demo program fro Datamatrix code recognition on webcam
 
    
 
