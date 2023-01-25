@@ -77,7 +77,14 @@ If you have copied repository in C:\ocvWrapper, then:
 
   set path=C:\ocvWrapper\bin\Release\x86
 
-Now Opencv and ocvWrapper can be used from programs.
+Now Opencv and ocvWrapper can be used from every program.
+
+# Delphi use
+
+To use ocvWrapper from Delphi only add OPENCVWrapper.pas to Uses clause
+of program.
+
+
 
 # Example programs
 
@@ -95,5 +102,10 @@ Now Opencv and ocvWrapper can be used from programs.
 
 - datamatrixTest: a Delphi demo program fro Datamatrix code recognition on webcam
 
-   
+# Build from sources
+
+The library can be rebuilt using the Visual C++ 2017 project in ocvCPPWrapper24 directory.
+Only dependence are the .lib files of Opencv, found in  \build directory inside Opencv
+root directory.
+
 
