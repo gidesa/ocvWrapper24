@@ -4,7 +4,9 @@ Opencv  C and Delphi wrapper for C++ classes
 This project contains a dynamic library (DLL in Windows) that is a wrapper
 around the C++ API of Opencv v 2.4.13 .
 The library expose a pure C API interface to all C++ classes and funtions of Opencv.
-In turn there are Delphi units to call the various wrapper C API.
+More than 1.100 C wrapper functions cover vast majority of Opencv C++ classes and global
+functions, and some native C++ classes.
+The library is accessed by Delphi units with signatures to all the wrapper C API.
 
 # Bases
 
