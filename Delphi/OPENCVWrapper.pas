@@ -20,7 +20,6 @@
 unit OPENCVWrapper;
 
 interface
-uses ipl;
 
 const
 
@@ -77,6 +76,43 @@ __intern§45 = record  end;
 __intern§46 = record  end;
 __intern§47 = record  end;
 __intern§48 = record  end;
+
+  { IplImage structure from old Opencv C API }
+  TIplROI = record
+    Coi     : Integer;
+    XOffset : Integer;
+    YOffset : Integer;
+    Width   : Integer;
+    Height  : Integer;
+  end;
+  PIplROI = ^TIplROI;
+
+  PIplImage = ^TIplImage;
+  TIplImage = record
+    NSize           : Integer;                 // size of iplImage struct
+    ID              : Integer;                 // version
+    NChannels       : Integer;
+    AlphaChannel    : Integer;
+    Depth           : Integer;                 // pixel depth in bits
+    ColorModel      : array [0..3] of AnsiChar;
+    ChannelSeq      : array [0..3] of AnsiChar;
+    DataOrder       : Integer;
+    Origin          : Integer;
+    Align           : Integer;                 // 4 or 8 byte align
+    Width           : Integer;
+    Height          : Integer;
+    Roi             : PIplROI;
+    MaskROI         : PIplImage;               // poiner to maskROI if any
+    ImageId         : Pointer;                 // use of the application
+    TileInfo        : Pointer;            // contains information on tiling
+    ImageSize       : Integer;                 // useful size in bytes
+    ImageData       : PByte;                   // pointer to aligned image
+    WidthStep       : Integer;                 // size of aligned line in bytes
+    BorderMode      : array [0..3] of Integer;
+    BorderConst     : array [0..3] of Integer;
+    ImageDataOrigin : PByte;                   // ptr to full, nonaligned image
+  end;
+
 
 { Opencv and C++ native classes, vectors, pointers type }
   PCvMat_t = ^__intern§1;
