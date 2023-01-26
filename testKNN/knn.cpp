@@ -11,19 +11,8 @@
 // Converted to use OpenCV 2.4 pure C wrapper library
 
 
-#include "opencv2/core/core.hpp"
-#include "opencv2/ml/ml.hpp"
-#include  "opencv2/features2d/features2d.hpp"
-#include  "opencv2/imgproc/imgproc.hpp"
-//#include  "opencv2/calib3d/calib3d.hpp"
-//#include  "opencv2/video/tracking.hpp"
-//#include  "opencv2/photo/photo.hpp"
-//#include  "opencv2/video/background_segm.hpp"
-//#include  "opencv2/objdetect/objdetect.hpp"
+
 #include  "opencv2/contrib/contrib.hpp"
-//#include  "opencv2/highgui/highgui.hpp"
-//#include  "opencv2/nonfree/features2d.hpp"
-//#include  "opencv2/nonfree/nonfree.hpp"
 
 using namespace cv;            // OpenCV API is in the C++ "cv" namespace
 
@@ -31,7 +20,6 @@ using namespace cv;            // OpenCV API is in the C++ "cv" namespace
 using namespace std;
 
 #include "..\source\ocvWrp_nativeTypes_signatures.h"
-//#include "..\source\ocvWrp_c_generated_types.h"
 #include "..\source\ocvWrp_c_generated_signatures.h"
 #include "..\source\ocwWrp_nativeClasses_signatures.h"
 
