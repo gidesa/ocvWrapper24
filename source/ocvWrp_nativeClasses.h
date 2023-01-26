@@ -211,38 +211,73 @@ void Mat_cpy(Mat_t* dest, Mat src) {
 
 CVAPI(struct  Mat_t*)   pCvMatCreate(int ndims, const int* dims, int mtype)
 {
-	struct Mat_t* wrapper = new Mat_t;
-	wrapper->v = new cv::Mat(ndims, dims, mtype, 0.0f);
+	struct Mat_t* wrapper = 0;
+try {
+		wrapper = new Mat_t;
+		wrapper->v = new cv::Mat(ndims, dims, mtype, 0.0f);
+}
+	catch (std::exception &e) {
+		exceptionDisplay(e.what());
+};
+
 	return (wrapper);
 }
 
 CVAPI(struct  Mat_t*)   pCvMatCreateEmpty()
 {
-	struct Mat_t* wrapper = new Mat_t;
+	struct Mat_t* wrapper = 0;
+try {
+	wrapper = new Mat_t;
 	wrapper->v = new cv::Mat();
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+
 	return (wrapper);
 }
 
 CVAPI(struct  Mat_t*)   pCvMat2dCreate(int cols, int rows, int mtype)
 {
-	struct Mat_t* wrapper = new Mat_t;
+	struct Mat_t* wrapper = 0;
+try {
+	wrapper = new Mat_t;
 	wrapper->v = new cv::Mat(cols, rows, mtype, 0.0f);
+}
+	catch (std::exception &e) {
+		exceptionDisplay(e.what());
+};
+
 	return (wrapper);
 }
 
 CVAPI(struct  Mat_t*)   pCvMatImageCreate(int width, int height, int mtype)
 {
-	struct Mat_t* wrapper = new Mat_t;
-	wrapper->v = new cv::Mat(Size(width, height), mtype, Scalar(0.0f));
-	return (wrapper);
+	struct Mat_t* wrapper = 0;
+try {
+		wrapper = new Mat_t;
+		wrapper->v = new cv::Mat(Size(width, height), mtype, Scalar(0.0f));
+}
+	catch (std::exception &e) {
+		exceptionDisplay(e.what());
+};
+
+		return (wrapper);
 }
 
 CVAPI(struct  Mat_t*)   pCvMatROI(Mat_t* src, CvRectS* roi)
 {
-	struct Mat_t* wrapper = new Mat_t;
+	struct Mat_t* wrapper = 0;
+try {
+		wrapper = new Mat_t;
 	wrapper->v = new cv::Mat();
 	Mat m = (*src->v)(cv::Rect(roi->x, roi->y, roi->width, roi->height));
 	Mat_cpy(wrapper, m);
+}
+	catch (std::exception &e) {
+		exceptionDisplay(e.what());
+};
+
 	return (wrapper);
 }
 
@@ -255,33 +290,82 @@ CVAPI(void)   pCvMatDelete(struct Mat_t* wrapper)
 
 CVAPI(void)   pCvMatFill(struct Mat_t* wrapper, struct Scalar_t* val)
 {
+try {
 	wrapper->v->setTo(*val->v);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+
 }
 
 CVAPI(void)   pCvMatCopy(struct Mat_t* src, struct Mat_t* dst)
 {
+try {
 	(src->v)->copyTo(*dst->v);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+
 }
 
 
 CVAPI(unsigned char)   pCvMatGetByte(struct Mat_t* wrapper, int rowind, int colind) {
-	return wrapper->v->at<unsigned char>(rowind, colind);
+	uchar retval = 0;
+try {
+	retval = wrapper->v->at<unsigned char>(rowind, colind);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+
+	return retval;
 }
 
 CVAPI(int)   pCvMatGetInt(struct Mat_t* wrapper, int rowind, int colind) {
-	return wrapper->v->at<int>(rowind, colind);
+	int retval = 0;
+try {
+	retval = wrapper->v->at<int>(rowind, colind);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+
+	return retval;
 }
 
 CVAPI(float)   pCvMatGetFloat(struct Mat_t* wrapper, int rowind, int colind) {
-	return wrapper->v->at<float>(rowind, colind);
+	float retval = 0;
+try {
+	retval = wrapper->v->at<float>(rowind, colind);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+    return retval;
 }
 
 CVAPI(float)   pCvMatGetFloatMultidim(struct Mat_t* wrapper, int* indexes) {
-	return wrapper->v->at<float>(indexes);
+	float retval = 0;
+try {
+	retval = wrapper->v->at<float>(indexes);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+    return retval;
 }
 
 CVAPI(double)   pCvMatGetDouble(struct Mat_t* wrapper, int rowind, int colind) {
-	return wrapper->v->at<double>(rowind, colind);
+	double retval = 0;
+try {
+		retval = wrapper->v->at<double>(rowind, colind);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+    return retval;
 }
 
 
@@ -367,9 +451,15 @@ CVAPI(struct Mat_t*)   pCvMatGetRow(struct Mat_t* wrapper, int nrow) {
 
 CVAPI(IplImage*)  pCvMatToIplimage(Mat_t* srcmat)
 {
-	IplImage* pipl = new IplImage;
+	IplImage* pipl = 0;
+try {
 	// converte direttamente cv::Mat in nuova iplimage
+	pipl = new IplImage;
 	*pipl = *srcmat->v;
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
 	return pipl;
 
 }
@@ -385,8 +475,12 @@ CVAPI(void) pCvIplImageToMat(IplImage* pipl, Mat_t* outmat) {
 	//Mat newmat = Mat(&src, true);
 	// od anche meglio, supportato in OCV 3+ ....
 	// release previous Mat object
+try {
 	*outmat->v = cv::cvarrToMat(pipl, true);
 }
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};}
 //**************************************************************************************
 
 
