@@ -31,11 +31,15 @@ from script, but are written manually.
 # Wrapper implementation
 
 Wrapper code bind a special C struct to every class, Opencv struct, Ptr or vector. The binding struct end with \"_t\" suffix.
-The struct contains internally a field with the reference to the real Opencv internal entity (class, struct, ecc.)
-For every Opencv/C++ type there are a create function, that return the binding struct, and a delete function, that release the memory
-allocated for the entity and for the struct iself. Only Ptr, as said, haven't the create function but only delete function.
+The struct contains internally a field with the reference to the real Opencv internal entity (class, struct, ecc.).
+
+Every Opencv/C++ class is "flattened" to a group of C functions: one for create, one for delete, one for every method, one for
+every property get, and one for every property set. The create function returns the binding struct, and the delete function release the memory
+allocated for the entity and for the struct iself. 
+
+Only Ptr, as said, haven't the create function but only delete function.
 When the C or Delphi caller program  invoke some method or function, it pass always as the first parameter the pointer to binding
-struct, returned from corresponding create function.
+struct, that was returned from the corresponding create function.
 
 All C wrapper functions have the "pCv" prefix, after that the class name, after that the original Opencv method name:
 
