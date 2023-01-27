@@ -370,82 +370,172 @@ catch (std::exception &e) {
 
 
 CVAPI(Vec3b_t*)   pCvMatGetPixelC3(struct Mat_t* wrapper, int rowind, int colind) {
-	Vec3b_t* retval = new Vec3b_t;
+	Vec3b_t* retval = 0;
+try {
+	retval = new Vec3b_t;
 	Vec3b* pr = new Vec3b();
 	retval->v = pr;
 	Vec3b p = wrapper->v->at<Vec3b>(rowind, colind);
 	Vec3b_cpy(retval, p);
-	return (retval);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+    return (retval);
 }
 
 
 CVAPI(unsigned char)   pCvMatSetByte(struct Mat_t* wrapper, int rowind, int colind, unsigned char value) {
+try {
 	wrapper->v->at<unsigned char>(rowind, colind) = value;
-	return (value);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+return (value);
 }
 
 CVAPI(int)   pCvMatSetInt(struct Mat_t* wrapper, int rowind, int colind, int value) {
+try {
 	wrapper->v->at<int>(rowind, colind) = value;
-	return (value);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+return (value);
 }
 
 CVAPI(float)   pCvMatSetFloat(struct Mat_t* wrapper, int rowind, int colind, float value) {
+try {
 	wrapper->v->at<float>(rowind, colind) = value;
-	return (value);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+return (value);
 }
 
 CVAPI(float)   pCvMatSetFloatMultidim(struct Mat_t* wrapper, int* indexes, float value) {
+try {
 	wrapper->v->at<float>(indexes) = value;
-	return (value);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+return (value);
 }
 
 
 CVAPI(double)   pCvMatSetDouble(struct Mat_t* wrapper, int rowind, int colind, double value) {
+try {
 	wrapper->v->at<double>(rowind, colind) = value;
-	return (value);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+return (value);
 }
 
 
 CVAPI(Vec3b_t*)   pCvMatSetPixelC3(struct Mat_t* wrapper, int rowind, int colind, Vec3b_t* value) {
+try {
 	wrapper->v->at<Vec3b>(rowind, colind) = *value->v;
-	return (value);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+return (value);
 }
 
 CVAPI(int)   pCvMatGetWidth(struct Mat_t* wrapper) {
-	return wrapper->v->cols;
+	int retval = 0;
+try {
+	retval = wrapper->v->cols;
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+return (retval);
 }
 
 CVAPI(int)   pCvMatGetHeight(struct Mat_t* wrapper) {
-	return wrapper->v->rows;
+	int retval = 0;
+try {
+		retval = wrapper->v->rows;
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+    return (retval);
 }
 
 CVAPI(int)   pCvMatGetChannels(struct Mat_t* wrapper) {
-	return wrapper->v->channels();
+	int retval = 0;
+try {
+		retval = wrapper->v->channels();
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+    return (retval);
 }
 
 CVAPI(int)   pCvMatGetType(struct Mat_t* wrapper) {
-	return wrapper->v->type();
+	int retval = 0;
+try {
+		retval = wrapper->v->type();
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+    return (retval);
 }
 
 CVAPI(int)   pCvMatGetDims(struct Mat_t* wrapper) {
-	return wrapper->v->dims;
+	int retval = 0;
+try {
+		retval = wrapper->v->dims;
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+return (retval);
 }
 
 CVAPI(int)   pCvMatGetData(struct Mat_t* wrapper) {
-	return int(wrapper->v->data);
+	int retval = 0;
+try {
+		retval = int(wrapper->v->data);
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+    return (retval);
 }
 
 CVAPI(int)   pCvMatGetDepth(struct Mat_t* wrapper) {
-	return wrapper->v->depth();
+	int retval = 0;
+try {
+		retval = wrapper->v->depth();
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
+    return (retval);
 }
 
 CVAPI(struct Mat_t*)   pCvMatGetRow(struct Mat_t* wrapper, int nrow) {
+	Mat_t*  retval = 0;
+try {
 	Mat tr = (*wrapper->v).row(nrow);
 	Mat*  t = new Mat();
-	Mat_t*  retval = new Mat_t;
+	retval = new Mat_t;
 	retval->v = t;
 	Mat_cpy(retval, tr);
-
+}
+catch (std::exception &e) {
+	exceptionDisplay(e.what());
+};
 	return (retval);
 }
 
@@ -682,7 +772,8 @@ CVAPI(void)   pCvPointDelete(Point_t* wrapper)
 	assert(wrapper);
 	delete wrapper->v;
 	delete wrapper;
-}CVAPI(void)   pCvPointToStruct(Point_t* wrapper, CvPointS* dest)
+}
+CVAPI(void)   pCvPointToStruct(Point_t* wrapper, CvPointS* dest)
 {
 	try {
 		assert(wrapper);
@@ -694,7 +785,8 @@ CVAPI(void)   pCvPointDelete(Point_t* wrapper)
 	catch (std::exception &e) {
 		exceptionDisplay(e.what());
 	};
-}CVAPI(void)   pCvPointFromStruct(Point_t* wrapper, CvPointS* src)
+}
+CVAPI(void)   pCvPointFromStruct(Point_t* wrapper, CvPointS* src)
 {
 	try {
 		assert(wrapper);
@@ -726,6 +818,7 @@ CVAPI(void)   pCvPoint2fDelete(Point2f_t* wrapper)
 	assert(wrapper);
 	delete wrapper->v;
 	delete wrapper;
+
 }CVAPI(void)   pCvPoint2fToStruct(Point2f_t* wrapper, CvPoint2fS* dest)
 {
 	try {
@@ -738,7 +831,8 @@ CVAPI(void)   pCvPoint2fDelete(Point2f_t* wrapper)
 	catch (std::exception &e) {
 		exceptionDisplay(e.what());
 	};
-}CVAPI(void)   pCvPoint2fFromStruct(Point2f_t* wrapper, CvPoint2fS* src)
+}
+CVAPI(void)   pCvPoint2fFromStruct(Point2f_t* wrapper, CvPoint2fS* src)
 {
 	try {
 		assert(wrapper);
