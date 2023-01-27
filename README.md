@@ -68,6 +68,45 @@ For example, for Ptr_Feature2d type there is a pCvPtr_Feature2dConvert function,
 returns a pointer to a fresh Feature2d_t binding struct. When calling a method of Feature2D class (example: pCvFeature2dcompute) 
 you will use the binding struct as first parameter, not the original Ptr.
   
+Note an important aspect: all binding structs created with create functions must be deleted, of course. But the same is true also for
+binding structs returned directly from other wrapper functions. For example, all structs returned from properties get methods. Or
+all structs returned from the functions for get elements of some vectors types, ex. vector_keypoint.
+
+All structs not properly deleted cause memory leaks.
+  
+# C++ exception handling
+
+The C++ and Opencv exceptions are handled by a special handler function in wrapper. This function always print the exception message
+on standard output. If the caller application is a console one, than the error messages are visible directly in application
+window. 
+
+The handler function also call an external handler function, if registered, passing the exception message. The external function can
+be registered calling the DLL function:
+
+bool     pCvRedirectException(void * func);
+
+If pointer "func" \> 0 the external handler is registered, if func = 0 the handler is unregistered.
+
+The signature of external handler has to be:
+
+void(*customException) (string_t*)
+
+Regarding Delphi, the main unit OPENCVWrapper.pas (see forward) when initializing register a standard handler, that
+raise a Delphi exception for every C** or Opencv exception.
+But you can register a different function, with the same signature as the unit one:
+
+procedure cvException(msg: PCvString_t); 
+
+(Note that the "msg" struct must not be deleted inside cvException or other user custom handler, because after completion it returns to the caller,
+i.e. the wrapper handler, and this one delete the struct).
+
+By the way, there is a trick also for Windows Delphi applications to open a console window, just insert {$APPTYPE CONSOLE}
+in the project .dpr source: the forms will be displayed normally, plus a console window will be open.
+
+
+
+
+
 # Installation (Windows)
 
 Download Opencv version 2.4.13.6 from https://sourceforge.net/projects/opencvlibrary/files/opencv-win/2.4.13/opencv-2.4.13.6-vc14.exe/download
