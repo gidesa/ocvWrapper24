@@ -137,6 +137,12 @@ int main( int argc, char** argv )
 
         // all OK : main returns 0
 		pCvCvKNearestDelete(knn);
+		pCvMatDelete(training_data);
+		pCvMatDelete(testing_data);
+		pCvMatDelete(training_responses);
+		pCvMatDelete(testing_responses);
+		pCvMatDelete(false_positives);
+		pCvMatDelete(emptymat);
         return 0;
     }
 
