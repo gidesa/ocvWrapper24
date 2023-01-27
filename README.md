@@ -89,10 +89,10 @@ If pointer "func" \> 0 the external handler is registered, if func = 0 the handl
 
 The signature of external handler has to be:
 
-void(*customException) (string_t*)
+void(\*customException) (string_t*)
 
-Regarding Delphi, the main unit OPENCVWrapper.pas (see forward) when initializing register a standard handler, that
-raise a Delphi exception for every C** or Opencv exception.
+Regarding Delphi, the main unit OPENCVWrapper.pas (see forward) during initialization registers a standard handler, that
+raise a Delphi exception for every C++ or Opencv exception.
 But you can register a different function, with the same signature as the unit one:
 
 procedure cvException(msg: PCvString_t); 
