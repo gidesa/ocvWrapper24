@@ -1,12 +1,14 @@
-# ocvWrapper24 v 0.9
-Opencv  C and Delphi wrapper for C++ classes
+# ocvWrapper24 v 1.0
+
+# A wrapper library around Opencv C++ API for Delphi, Lazarus/Freepascl and C
 
 This project contains a dynamic library (DLL in Windows) that is a wrapper
 around the C++ API of Opencv v 2.4.13 .
-The library expose a pure C API interface to all C++ classes and funtions of Opencv.
+The library expose a pure C API interface to all C++ classes and functions of Opencv.
 More than 1.100 C wrapper functions cover vast majority of Opencv C++ classes and global
 functions, and some native C++ classes.
-The library is accessed by Delphi units with signatures to all the wrapper C API.
+The library is intended especially for accessing Opencv C++ API from Delphi and Freepascal units.
+So in this repository there are Delphi/Freepascal units with signatures to all the wrapper C API.
 
 # Bases
 
@@ -147,11 +149,13 @@ So IDE cannot help in code suggestion, and compiler cannot catch wrong use.
 
 - motionTest: a Delphi demo program for motion tracking
 
-- featureTest: a Delphi demo program for ORB feature detector class and matching between images
+- featureTest: a Delphi and Lazarus/Freepascal demo program for ORB feature detector class and matching between images
 
 - cascadeTest: a Delphi demo program for face recognition on webcam, by cascade classifier class
 
 - datamatrixTest: a Delphi demo program fro Datamatrix code recognition on webcam
+
+
 
 # Build from sources
 
