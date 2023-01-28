@@ -18,6 +18,9 @@
   Boston, MA 02110-1335, USA.
 }
 unit OPENCVWrapper;
+{$IFDEF FPC}
+  {$MODE Delphi}
+{$ENDIF}
 
 interface
 
@@ -26,56 +29,56 @@ const
 {$INCLUDE 'unOcvWrapper_const.pas'}
 
 type
-__intern§1 = record  end;
-__intern§2 = record  end;
-__intern§3 = record  end;
-__intern§4 = record  end;
-__intern§5 = record  end;
-__intern§6 = record  end;
-__intern§7 = record  end;
-__intern§8 = record  end;
-__intern§9 = record  end;
-__intern§10 = record  end;
-__intern§11 = record  end;
-__intern§12 = record  end;
-__intern§13 = record  end;
-__intern§14 = record  end;
-__intern§15 = record  end;
-__intern§16 = record  end;
-__intern§17 = record  end;
-__intern§18 = record  end;
-__intern§19 = record  end;
-__intern§20 = record  end;
-__intern§21 = record  end;
-__intern§22 = record  end;
-__intern§23 = record  end;
+__intern__1 = record  end;
+__intern__2 = record  end;
+__intern__3 = record  end;
+__intern__4 = record  end;
+__intern__5 = record  end;
+__intern__6 = record  end;
+__intern__7 = record  end;
+__intern__8 = record  end;
+__intern__9 = record  end;
+__intern__10 = record  end;
+__intern__11 = record  end;
+__intern__12 = record  end;
+__intern__13 = record  end;
+__intern__14 = record  end;
+__intern__15 = record  end;
+__intern__16 = record  end;
+__intern__17 = record  end;
+__intern__18 = record  end;
+__intern__19 = record  end;
+__intern__20 = record  end;
+__intern__21 = record  end;
+__intern__22 = record  end;
+__intern__23 = record  end;
 
-__intern§24 = record  end;
-__intern§25 = record  end;
-__intern§26 = record  end;
-__intern§27 = record  end;
-__intern§28 = record  end;
-__intern§29 = record  end;
-__intern§30 = record  end;
-__intern§31 = record  end;
-__intern§32 = record  end;
-__intern§33 = record  end;
-__intern§34 = record  end;
-__intern§35 = record  end;
-__intern§36 = record  end;
-__intern§37 = record  end;
-__intern§38 = record  end;
-__intern§39 = record  end;
+__intern__24 = record  end;
+__intern__25 = record  end;
+__intern__26 = record  end;
+__intern__27 = record  end;
+__intern__28 = record  end;
+__intern__29 = record  end;
+__intern__30 = record  end;
+__intern__31 = record  end;
+__intern__32 = record  end;
+__intern__33 = record  end;
+__intern__34 = record  end;
+__intern__35 = record  end;
+__intern__36 = record  end;
+__intern__37 = record  end;
+__intern__38 = record  end;
+__intern__39 = record  end;
 
-__intern§40 = record  end;
-__intern§41 = record  end;
-__intern§42 = record  end;
-__intern§43 = record  end;
-__intern§44 = record  end;
-__intern§45 = record  end;
-__intern§46 = record  end;
-__intern§47 = record  end;
-__intern§48 = record  end;
+__intern__40 = record  end;
+__intern__41 = record  end;
+__intern__42 = record  end;
+__intern__43 = record  end;
+__intern__44 = record  end;
+__intern__45 = record  end;
+__intern__46 = record  end;
+__intern__47 = record  end;
+__intern__48 = record  end;
 
   { IplImage structure from old Opencv C API }
   TIplROI = record
@@ -115,55 +118,55 @@ __intern§48 = record  end;
 
 
 { Opencv and C++ native classes, vectors, pointers type }
-  PCvMat_t = ^__intern§1;
-  PCvVec2d_t = ^__intern§3;
-  PCvVec3d_t = ^__intern§4;
-  PCvVec3b_t = ^__intern§5;
-  PCvVec4f_t = ^__intern§6;
-  PCvVec6f_t = ^__intern§7;
-  PCvSize_t = ^__intern§8;
-  PCvRect_t = ^__intern§9;
-  PCvRotatedRect_t = ^__intern§10;
-  PCvPoint_t = ^__intern§11;
-  PCvPoint2d_t = ^__intern§12;
-  PCvPoint2f_t = ^__intern§13;
-  PCvScalar_t = ^__intern§14;
-  PCvTermCriteria_t = ^__intern§15;
-  PCvCvTermCriteria_t = ^__intern§16;
-  PCvRange_t = ^__intern§17;
-  PCvCvSlice_t = ^__intern§18;
-  PCvCvDTreeNode_t = ^__intern§19;
-  PCvMoments_t = ^__intern§20;
-  PCvIndexParams_t = ^__intern§21;
-  PCvSearchParams_t = ^__intern§22;
+  PCvMat_t = ^__intern__1;
+  PCvVec2d_t = ^__intern__3;
+  PCvVec3d_t = ^__intern__4;
+  PCvVec3b_t = ^__intern__5;
+  PCvVec4f_t = ^__intern__6;
+  PCvVec6f_t = ^__intern__7;
+  PCvSize_t = ^__intern__8;
+  PCvRect_t = ^__intern__9;
+  PCvRotatedRect_t = ^__intern__10;
+  PCvPoint_t = ^__intern__11;
+  PCvPoint2d_t = ^__intern__12;
+  PCvPoint2f_t = ^__intern__13;
+  PCvScalar_t = ^__intern__14;
+  PCvTermCriteria_t = ^__intern__15;
+  PCvCvTermCriteria_t = ^__intern__16;
+  PCvRange_t = ^__intern__17;
+  PCvCvSlice_t = ^__intern__18;
+  PCvCvDTreeNode_t = ^__intern__19;
+  PCvMoments_t = ^__intern__20;
+  PCvIndexParams_t = ^__intern__21;
+  PCvSearchParams_t = ^__intern__22;
 
-  PCvvector_uchar = ^__intern§23;
-  PCvvector_int = ^__intern§24;
-  PCvvector_float = ^__intern§25;
-  PCvvector_double = ^__intern§26;
-  PCvvector_Point = ^__intern§27;
-  PCvvector_Point2f = ^__intern§28;
-  PCvvector_Vec4f = ^__intern§29;
-  PCvvector_Vec6f = ^__intern§30;
-  PCvvector_Rect = ^__intern§31;
-  PCvvector_KeyPoint = ^__intern§32;
-  PCvvector_Mat = ^__intern§33;
-  PCvvector_DMatch = ^__intern§34;
-  PCvvector_string = ^__intern§35;
-  PCvvector_vector_Point = ^__intern§36;
-  PCvvector_vector_Point2f = ^__intern§37;
-  PCvvector_vector_DMatch = ^__intern§38;
+  PCvvector_uchar = ^__intern__23;
+  PCvvector_int = ^__intern__24;
+  PCvvector_float = ^__intern__25;
+  PCvvector_double = ^__intern__26;
+  PCvvector_Point = ^__intern__27;
+  PCvvector_Point2f = ^__intern__28;
+  PCvvector_Vec4f = ^__intern__29;
+  PCvvector_Vec6f = ^__intern__30;
+  PCvvector_Rect = ^__intern__31;
+  PCvvector_KeyPoint = ^__intern__32;
+  PCvvector_Mat = ^__intern__33;
+  PCvvector_DMatch = ^__intern__34;
+  PCvvector_string = ^__intern__35;
+  PCvvector_vector_Point = ^__intern__36;
+  PCvvector_vector_Point2f = ^__intern__37;
+  PCvvector_vector_DMatch = ^__intern__38;
 
 
-  PCvPtr_Algorithm = ^__intern§39;
-  PCvPtr_Feature2D = ^__intern§40;
-  PCvPtr_FaceRecognizer = ^__intern§41;
-  PCvPtr_CLAHE = ^__intern§42;
-  PCvPtr_FeatureDetector = ^__intern§43;
-  PCvPtr_DescriptorExtractor = ^__intern§44;
-  PCvPtr_DescriptorMatcher = ^__intern§45;
-  PCvPtr_flann_IndexParams = ^__intern§46;
-  PCvPtr_flann_SearchParams = ^__intern§47;
+  PCvPtr_Algorithm = ^__intern__39;
+  PCvPtr_Feature2D = ^__intern__40;
+  PCvPtr_FaceRecognizer = ^__intern__41;
+  PCvPtr_CLAHE = ^__intern__42;
+  PCvPtr_FeatureDetector = ^__intern__43;
+  PCvPtr_DescriptorExtractor = ^__intern__44;
+  PCvPtr_DescriptorMatcher = ^__intern__45;
+  PCvPtr_flann_IndexParams = ^__intern__46;
+  PCvPtr_flann_SearchParams = ^__intern__47;
 
 
 
@@ -401,10 +404,15 @@ PCvMomentsS = ^CvMomentsS;
 {$INCLUDE   'unOcvWrapper_functions.pas'}
 
 implementation
+
+ {$IFDEF FPC}
+ uses SysUtils;
+ {$ELSE}
  uses System.SysUtils;
+ {$ENDIF}
  const
  {$IFDEF DEBUG}
- ocvWrapper = 'C:\ocvWrapper\bin\Debug\x86\ocvCPPWrapper24.dll';
+ ocvWrapper = 'D:\GDS\progC\ocvWrapper\bin\Debug\x86\ocvCPPWrapper24.dll';
  {$ELSE}
  ocvWrapper = 'ocvCPPWrapper24.dll';
  {$ENDIF}

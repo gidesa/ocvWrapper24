@@ -683,7 +683,7 @@ Procedure  pCvellipse2(img: PCvMat_t; box: PCvRotatedRect_t; color: PCvScalar_t;
 Procedure  pCvellipse2Poly(center: PCvPoint_t; axes: PCvSize_t; angle: Integer; arcStart: Integer; arcEnd: Integer; delta: Integer; pts: PCvvector_Point); cdecl;
 Procedure  pCvequalizeHist(src: PCvMat_t; dst: PCvMat_t); cdecl;
 Procedure  pCverode(src: PCvMat_t; dst: PCvMat_t; kernel: PCvMat_t; anchor: PCvPoint_t { default: Point(-1,-1) }; iterations: Integer { default: 1 }; borderType: Integer { default: BORDER_CONSTANT }; borderValue: PCvScalar_t { default: morphologyDefaultBorderValue() }); cdecl;
-Function   pCvestimateAffine3D(src: PCvMat_t; dst: PCvMat_t; out: PCvMat_t; inliers: PCvMat_t; ransacThreshold: Double { default: 3 }; confidence: Double { default: 0.99 }): Integer; cdecl;
+Function   pCvestimateAffine3D(src: PCvMat_t; dst: PCvMat_t; _out: PCvMat_t; inliers: PCvMat_t; ransacThreshold: Double { default: 3 }; confidence: Double { default: 0.99 }): Integer; cdecl;
 Function   pCvestimateRigidTransform(src: PCvMat_t; dst: PCvMat_t; fullAffine: Boolean): PCvMat_t; cdecl;
 Procedure  pCvexp(src: PCvMat_t; dst: PCvMat_t); cdecl;
 Procedure  pCvextractChannel(src: PCvMat_t; dst: PCvMat_t; coi: Integer); cdecl;
