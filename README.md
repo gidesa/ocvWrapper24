@@ -1,6 +1,6 @@
 # ocvWrapper24 v 1.0
 
-# A wrapper library around Opencv C++ API for Delphi, Lazarus/Freepascl and C
+# A wrapper library around Opencv C++ API for Delphi, Lazarus/Freepascal and C
 
 This project contains a dynamic library (DLL in Windows) that is a wrapper
 around the C++ API of Opencv v 2.4.13 .
