@@ -140,8 +140,8 @@ If you haven't Visual C++ runtime, download and install from here:
 
 https://learn.microsoft.com/it-it/cpp/windows/latest-supported-vc-redist?view=msvc-170
 
-WARNING! 64 bit applications could raise error "0xc000007b" if in the path the FIRST ocvWrapper or Opencv directory is the one for 32 bit. Inverse
-thing if a 32 bit application found in path a 64 bit DLL. 
+WARNING! 64 bit applications could raise error "0xc000007b" if in the path the FIRST ocvWrapper or Opencv directory is the one for 32 bit. Same 
+error if a 32 bit application find in path a 64 bit DLL. 
 
 # Delphi use
 
