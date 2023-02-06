@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Debug-x86"/>
+    <Units>
+      <Unit>
+        <Filename Value="datamatrixTest.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <CursorPos Y="17"/>
+        <UsageCount Value="23"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form6"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="52"/>
+        <CursorPos X="85" Y="86"/>
+        <UsageCount Value="23"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\Delphi\OPENCVWrapper.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="523"/>
+        <CursorPos X="42" Y="527"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\Delphi\unOcvWrapper_functions.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="679"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
+    </Units>
+    <OtherDefines Count="5">
+      <Define0 Value="Borland"/>
+      <Define1 Value="Ver150"/>
+      <Define2 Value="Delphi7"/>
+      <Define3 Value="Compiler6_Up"/>
+      <Define4 Value="PUREPASCAL"/>
+    </OtherDefines>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="30" Column="16" TopLine="16"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="19" Column="31" TopLine="16"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="77" Column="40" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="80" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="83" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="85" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="87" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="89" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="30" Column="16" TopLine="10"/>
+      </Position>
+      <Position>
+        <Filename Value="datamatrixTest.lpr"/>
+        <Caret Line="15"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\Delphi\OPENCVWrapper.pas"/>
+        <Caret Line="410" Column="35" TopLine="394"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="79" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="80" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="83" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="85" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="87" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="89" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="90" TopLine="74"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\Delphi\OPENCVWrapper.pas"/>
+        <Caret Line="404" Column="40" TopLine="394"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="89" Column="43" TopLine="74"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="93" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="89" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="95" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="98" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="95" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="datamatrixTest.lpr"/>
+        <Caret Line="17"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="93" TopLine="85"/>
+      </Position>
+      <Position>
+        <Filename Value="frmDatamatrixTest.pas"/>
+        <Caret Line="92" TopLine="85"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\Delphi\OPENCVWrapper.pas"/>
+        <Caret Line="534" Column="47" TopLine="523"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\Delphi\OPENCVWrapper.pas"/>
+        <Caret Line="409" Column="29" TopLine="402"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode="default">
+        <Mode Name="default">
+          <local>
+            <WorkingDirectory Value="D:\GDS\progC\ocvWrapper\bin\Release\x86"/>
+          </local>
+        </Mode>
+      </Modes>
+    </RunParams>
+    <HistoryLists>
+      <List Name="WorkingDirectory" Type="File" Count="2">
+        <Item1 Value="D:\GDS\progC\ocvWrapper\bin\Release\x86"/>
+        <Item2 Value="D:\GDS\pascal\ocvWrapper\examples-Freepascal\datamatrixTest\lib\i386-win32"/>
+      </List>
+      <List Name="LaunchingApplication" Type="File" Count="1">
+        <Item1 Value="C:\WINDOWS\system32\cmd.exe /C ${TargetCmdLine}"/>
+      </List>
+    </HistoryLists>
+  </ProjectSession>
+</CONFIG>

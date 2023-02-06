@@ -1,0 +1,32 @@
+object Form6: TForm6
+  Left = 669
+  Height = 120
+  Top = 464
+  Width = 306
+  Caption = 'Datamatrix code test'
+  ClientHeight = 120
+  ClientWidth = 306
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  LCLVersion = '2.2.0.4'
+  object lbl1: TLabel
+    Left = 32
+    Height = 32
+    Top = 80
+    Width = 241
+    AutoSize = False
+    Caption = 'Library can recognize Datamatrix codes of length 3 alphabetic characters, not numbers'#13#10
+    WordWrap = True
+  end
+  object btnStart: TButton
+    Left = 88
+    Height = 25
+    Top = 32
+    Width = 121
+    Caption = 'Start webcam capture'
+    OnClick = btnStartClick
+    TabOrder = 0
+  end
+end
