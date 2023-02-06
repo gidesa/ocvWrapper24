@@ -1,6 +1,14 @@
-# ocvWrapper24 v 1.0
+# ocvWrapper24 v 1.1
 
 # A wrapper library around Opencv C++ API for Delphi, Lazarus/Freepascal and C
+
+
+# NEWS 6/2/2023
+
+* Added 64 bit version of DLL
+* Added more examples for Lazarus/Freepascal
+
+# Introduction
 
 This project contains a dynamic library (DLL in Windows) that is a wrapper
 around the C++ API of Opencv v 2.4.13 .
@@ -10,7 +18,7 @@ functions, and some native C++ classes.
 The library is intended especially for accessing Opencv C++ API from Delphi and Freepascal units.
 So in this repository there are Delphi/Freepascal units with signatures to all the wrapper C API.
 
-# Bases
+# Base library design
 
 The wrapper code is based on the Python Opencv interface. So, all Opencv classes or functions
 exposed to Python are also exposed in wrapper.
@@ -106,10 +114,14 @@ By the way, there is a trick also for Windows Delphi applications to open a cons
 in the project .dpr source: the forms will be displayed normally, plus a console window will be open.
 
 
-
-
-
 # Installation (Windows)
+
+Prerequisites to use provided DLL binaries:
+
+
+- Opencv version 2.4.13.6
+- Visual C++ 2017 runtime 
+
 
 Download Opencv version 2.4.13.6 from https://sourceforge.net/projects/opencvlibrary/files/opencv-win/2.4.13/opencv-2.4.13.6-vc14.exe/download
 
@@ -117,12 +129,19 @@ Install Opencv, and add in Windows path the directory with Opencv DLL (for examp
 
   set path=C:\opencv2.4.13.6\build\x86\vc14\bin;%path%
 
-Download this repository and add in Windows path the directory with ocvWrapper.dll (note: for now there is only the 32 bit binary DLL).
-If you have copied repository in C:\ocvWrapper, then:
+Download this repository and add in Windows path the directory with ocvWrapper.dll .
+For example, if you have copied repository in C:\ocvWrapper, then:
 
   set path=C:\ocvWrapper\bin\Release\x86
 
 Now Opencv and ocvWrapper can be used from every program.
+
+If you haven't Visual C++ runtime, download and install from here:
+
+https://learn.microsoft.com/it-it/cpp/windows/latest-supported-vc-redist?view=msvc-170
+
+WARNING! 64 bit applications could raise error "0xc000007b" if in the path the FIRST ocvWrapper or Opencv directory is the one for 32 bit. Inverse
+thing if a 32 bit application found in path a 64 bit DLL. 
 
 # Delphi use
 
@@ -143,17 +162,17 @@ So IDE cannot help in code suggestion, and compiler cannot catch wrong use.
 
 - testKNN: a pure C program that use the K Nearest Neighbors class from Machine Learning module (ML)
 
-- testPCA: a Delphi program for testing the PCA class from ML module
+- testPCA: a Delphi/Lazarus program for testing the PCA class from ML module
 
-- testSVM: a Delphi program for testing CvSVM class from ML module
+- testSVM: a Delphi/Lazarus program for testing CvSVM class from ML module
 
-- motionTest: a Delphi demo program for motion tracking
+- motionTest: a Delphi/Lazarus demo program for motion tracking
 
-- featureTest: a Delphi and Lazarus/Freepascal demo program for ORB feature detector class and matching between images
+- featureTest: a Delphi/Lazarus demo program for ORB feature detector class and matching between images
 
-- cascadeTest: a Delphi demo program for face recognition on webcam, by cascade classifier class
+- cascadeTest: a Delphi/Lazarus demo program for face recognition on webcam, by cascade classifier class
 
-- datamatrixTest: a Delphi demo program fro Datamatrix code recognition on webcam
+- datamatrixTest: a Delphi/Lazarus demo program for Datamatrix code recognition on webcam
 
 
 
