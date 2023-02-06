@@ -406,13 +406,13 @@ PCvMomentsS = ^CvMomentsS;
 implementation
 
  {$IFDEF FPC}
- uses SysUtils;
+ uses SysUtils, Math;
  {$ELSE}
  uses System.SysUtils;
  {$ENDIF}
  const
  {$IFDEF DEBUG}
- ocvWrapper = 'D:\GDS\progC\ocvWrapper\bin\Debug\x86\ocvCPPWrapper24.dll';
+ ocvWrapper = 'C:\ocvWrapper\bin\Debug\x86\ocvCPPWrapper24.dll';
  {$ELSE}
  ocvWrapper = 'ocvCPPWrapper24.dll';
  {$ENDIF}
@@ -459,7 +459,7 @@ implementation
 {$INCLUDE 'unOcvWrapper_extern.pas'}
 
 
-procedure cvException(msg: PCvString_t);
+procedure cvException(msg: PCvString_t); cdecl;
 begin
    raise Exception.Create('OpenCV Error: '+msg^.pstr);
 end;
@@ -541,4 +541,11 @@ end;
 {****************************************************************************}
 begin
     pCvRedirectException(@cvexception);
+
+    // For some Opencv functions Freepascal require to set
+    // Floating Point Unit exception mask to disable some exceptions generated
+    // from C++
+{$IFDEF FPC}
+    SetExceptionMask(GetExceptionMask + [exOverflow,exZeroDivide,exInvalidOp]);
+{$ENDIF}
 end.
