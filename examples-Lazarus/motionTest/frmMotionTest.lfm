@@ -1,0 +1,23 @@
+object Form6: TForm6
+  Left = 658
+  Height = 120
+  Top = 461
+  Width = 306
+  Caption = 'Motion code test'
+  ClientHeight = 120
+  ClientWidth = 306
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  LCLVersion = '2.2.0.4'
+  object btnStart: TButton
+    Left = 88
+    Height = 25
+    Top = 32
+    Width = 121
+    Caption = 'Start webcam capture'
+    OnClick = btnStartClick
+    TabOrder = 0
+  end
+end

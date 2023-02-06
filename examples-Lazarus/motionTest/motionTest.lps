@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Debug-x86"/>
+    <Units>
+      <Unit>
+        <Filename Value="motionTest.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <CursorPos X="3" Y="8"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="frmMotionTest.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form6"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="13" Y="18"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="5">
+      <Position>
+        <Filename Value="frmMotionTest.pas"/>
+        <Caret Line="26" Column="21" TopLine="20"/>
+      </Position>
+      <Position>
+        <Filename Value="frmMotionTest.pas"/>
+        <Caret Line="28" Column="12" TopLine="20"/>
+      </Position>
+      <Position>
+        <Filename Value="frmMotionTest.pas"/>
+        <Caret Line="18" Column="28"/>
+      </Position>
+      <Position>
+        <Filename Value="motionTest.lpr"/>
+        <Caret Line="8" Column="3"/>
+      </Position>
+      <Position>
+        <Filename Value="frmMotionTest.pas"/>
+        <Caret Line="30" Column="3" TopLine="16"/>
+      </Position>
+      <Position>
+        <Filename Value="frmMotionTest.pas"/>
+        <Caret Line="98" Column="42" TopLine="86"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
