@@ -149,7 +149,7 @@ To use ocvWrapper from Delphi only add the main unit OPENCVWrapper.pas to Uses c
 of program.
 Other .pas files are included directly from OPENCVWrapper.pas 
 In main unit there are many definitions of "fake" records, named as
-__inter§xx . They served only as a trick to force the Delphi IDE and compiler to discriminate
+__inter__xx . They served only as a trick to force the Delphi IDE and compiler to discriminate
 the various "opaque" pointers to wrapper structures. 
 
 Without the trick, all that pointers are only .... pointers, not different one from another!
