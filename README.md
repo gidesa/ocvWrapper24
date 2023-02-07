@@ -24,9 +24,9 @@ The wrapper code is based on the Python Opencv interface. So, all Opencv classes
 exposed to Python are also exposed in wrapper.
 The code is in general divided in two parts:
 - "generated" code, so called because it's automatically and totally generated from scripts using some annotations
-included in Opencv C++ headers (see https://docs.opencv.org/3.0.0/da/d49/tutorial_py_bindings_basics.html). This code must not be modified manually .
+included in Opencv C++ headers (see https://docs.opencv.org/3.0.0/da/d49/tutorial_py_bindings_basics.html). This code must not be modified by hand .
 - "native" code, so called because contains base Opencv classes and also native C++ classes that are not generated
-from script, but are written manually.
+from script, but are hand written.
 
 # Types of classes in Opencv
 
