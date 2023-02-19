@@ -1,6 +1,15 @@
-# ocvWrapper24 v 1.1
+# ocvWrapper24 v 1.2
 
 # A wrapper library around Opencv C++ API for Delphi, Lazarus/Freepascal and C
+
+# NEWS 19/2/2023
+
+* Added 2 functions for Delphi and Lazarus, they convert Opencv image class (Mat)
+   from/to a bitmap image
+* Added the more frequent class instances used as default in many Opencv functions and methods;
+  especially true for default Mat(), named pCvDefaultMat in ocvWrapper
+* Added 2 more examples: Skeletonize, and the classical Camshiftdemo
+* Fixed a bug in function PCvMatROI
 
 
 # NEWS 6/2/2023
@@ -174,6 +183,10 @@ So IDE cannot help in code suggestion, and compiler cannot catch wrong use.
 
 - datamatrixTest: a Delphi/Lazarus demo program for Datamatrix code recognition on webcam
 
+- skeletonize: a Delphi/Lazarus demo program that reduces an image to its more basic contours ("skeleton")
+
+- camshiftdemo: a Delphi/Lazarus demo program, adapted from a classical Opencv example; the program tracks
+  movements of a selected area in real time on webcam, for example the face of person in front of webcam 
 
 
 # Build from sources
