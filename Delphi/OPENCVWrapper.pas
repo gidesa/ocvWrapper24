@@ -1,4 +1,4 @@
-{ ocvWrapper: wrapper for C++ API  Opencv interface 
+{ ocvWrapper: wrapper for C++ API  Opencv interface
 
   Copyright (C) 2023 Giandomenico De Sanctis gidesay@yahoo.com
 
@@ -21,14 +21,27 @@ unit OPENCVWrapper;
 {$IFDEF FPC}
   {$MODE Delphi}
 {$ENDIF}
-
 interface
+uses
+{$ifdef MSWINDOWS}
+  Windows,
+{$endif}
+{$ifdef FPC}
+    {$ifdef LCL}
+     Graphics, FPImage, IntfGraphics;
+    {$endif}
+{$else}
+  Graphics;
+{$endif}
+
 
 const
 
 {$INCLUDE 'unOcvWrapper_const.pas'}
 
+
 type
+
 __intern__1 = record  end;
 __intern__2 = record  end;
 __intern__3 = record  end;
@@ -80,7 +93,12 @@ __intern__46 = record  end;
 __intern__47 = record  end;
 __intern__48 = record  end;
 
-  { IplImage structure from old Opencv C API }
+const
+IPL_ORIGIN_TL  = 0;
+IPL_ORIGIN_BL  = 1;
+
+type
+  { IplImage structure from Opencv C API }
   TIplROI = record
     Coi     : Integer;
     XOffset : Integer;
@@ -167,7 +185,6 @@ __intern__48 = record  end;
   PCvPtr_DescriptorMatcher = ^__intern__45;
   PCvPtr_flann_IndexParams = ^__intern__46;
   PCvPtr_flann_SearchParams = ^__intern__47;
-
 
 
 { helper records for some simple Opencv classes }
@@ -344,6 +361,8 @@ PCvMomentsS = ^CvMomentsS;
 
 
 {$INCLUDE   'unOcvWrapper_types.pas'}
+
+
 {------------- Pascal helpers ---------------}
   function CvSize_(width, height: Integer; pcvsize: PCvSize_t = nil): PCvSize_t;
   function CvScalar_(v0, v1, v2, v3: Double; pcvscalar: PCvScalar_t = nil): PCvScalar_t;
@@ -351,9 +370,13 @@ PCvMomentsS = ^CvMomentsS;
   function CvVec3b_(v0, v1, v2: byte; pcvvec3b: PCvVec3b_t = nil): PCvVec3b_t;
   function CvTermCriteria_(tcType: integer; max_iter: Integer; epsilon: Double;
                            pcvtermcrit: PCvCvTermCriteria_t = nil): PCvCvTermCriteria_t;
+  function  pCvMorphologyDefaultBordeValue(): PCvScalar_t;
+  procedure MatImage2Bitmap(matImg: PCvMat_t; var bitmap: TBitmap);
+  procedure Bitmap2MatImage(matImage: PCvMat_t;  bitmap: TBitmap);
+  {---- C++ exception redirection  -------}
+  function  pCvRedirectException(const func: Pointer): Boolean; cdecl;
 {--------------------------------------------}
-{ --------------- User functions ------------}
-  function   pCvRedirectException(const func: Pointer): Boolean; cdecl;
+{ --------------- Opencv User functions ------------}
   procedure  pCvDrawMatches(const img1: PCvMat_t; const keypoints1: PCvvector_KeyPoint;
             const img2: PCvMat_t; const keypoints2: PCvvector_KeyPoint;
             const matches1to2: PCvvector_DMatch; outImg: PCvMat_t;
@@ -361,6 +384,7 @@ PCvMomentsS = ^CvMomentsS;
   procedure  pCvPCACompute2(data: PCvMat_t; mean: PCvMat_t; eigenvectors: PCvMat_t;
                            eigenvalues: PCvMat_t;  maxComponents: Integer { default: 0 }); cdecl;
 
+{---------------------------------------------------}
 { C++ string class }
   function   pCvStringCreate(const nrchar: Integer): PCvString_t;   cdecl;
   procedure  pCvStringDelete(const cvstr: PCvString_t);  cdecl;
@@ -372,7 +396,7 @@ PCvMomentsS = ^CvMomentsS;
   function   pCvMatImageCreate(const width: Integer; height: Integer; mtype: Integer): PCvMat_t; cdecl;
   procedure  pCvMatDelete (const mat: PCvMat_t); cdecl;
   function   pCvMatROI(const mat: PCvMat_t; const roi: PCvRectS): PCvMat_t; cdecl;
-  procedure  pCvMatFill(const wrapper: PCvMat_t; const virtual: PCvScalar_t); cdecl;
+  procedure  pCvMatFill(const wrapper: PCvMat_t; const val: PCvScalar_t); cdecl;
   procedure  pCvMatCopy(const src: PCvMat_t; const dst: PCvMat_t); cdecl;
   function   pCvMatSetByte(const mat: PCvMat_t; const rowind: Integer; const colind: Integer; const val: Byte): Byte; cdecl;
   function   pCvMatGetByte(const mat: PCvMat_t; const rowind: Integer; const colind: Integer): Byte; cdecl;
@@ -400,19 +424,41 @@ PCvMomentsS = ^CvMomentsS;
 
 {----- Other Opencv and C++ native classes -----------}
 {$INCLUDE   'unOcvWrapper_nativeClasses.pas'}
-{----- Opencv classes and global fnctions  -----------}
+{----- Opencv classes and global functions  ----------}
 {$INCLUDE   'unOcvWrapper_functions.pas'}
 
+
+// The more frequent default values in functions and methods arguments,
+// that are defined as classes instance. They are defined here to help
+// calling ocvWrapper functions
+// Example:
+// Procedure  pCvaccumulate(src: PCvMat_t; dst: PCvMat_t; mask: PCvMat_t { default: Mat() });
+// can be called as:
+//   pCvaccumulate(src, dst, pCvDefaultMat);
+// Example:
+// Procedure  pCvpyrUp(src: PCvMat_t; dst: PCvMat_t; dstsize: PCvSize_t { default: Size() };
+//                          borderType: Integer { default: BORDER_DEFAULT });
+// can be called as:
+//   pCvpyrUp(src, dst, pCvDefaultSize, BORDER_DEFAULT );
+
+
+var
+  pCvDefaultMat:    PCvMat_t;
+  pCvDefaultSize:   PCvSize_t;
+  pCvDefaultPoint:  PCvPoint_t;
+  pCvPoint_1_1:     PCvPoint_t;   // Point(-1,-1)
+  pCvDefaultScalar: PCvScalar_t;
+{-----------------------------------------------------------------------------------------------}
 implementation
 
  {$IFDEF FPC}
  uses SysUtils, Math;
  {$ELSE}
- uses System.SysUtils;
+ uses System.SysUtils, Math;
  {$ENDIF}
  const
  {$IFDEF DEBUG}
- ocvWrapper = 'C:\ocvWrapper\bin\Debug\x86\ocvCPPWrapper24.dll';
+ ocvWrapper = 'D:\GDS\progC\ocvWrapper\bin\Debug\x86\ocvCPPWrapper24.dll';
  {$ELSE}
  ocvWrapper = 'ocvCPPWrapper24.dll';
  {$ENDIF}
@@ -538,7 +584,185 @@ begin
 
   pCvCvTermCriteriaFromStruct(Result, @ctermcrit);
 end;
+
+{-----------------------------------------------------------------------------
+  Procedure:  MatImage2Bitmap
+  Author:     G. De Sanctis
+  Date:       6/2/2023
+  Arguments:  matImg: PCvMat_t; bitmap: TBitmap
+  Description: convert a MatImage to a Windows bitmap
+-----------------------------------------------------------------------------}
+procedure MatImage2Bitmap(matImg: PCvMat_t; var bitmap: TBitmap);
+  VAR
+    j        :  longint;
+    offset   :  longint;
+    dataByte :  PByteArray;
+    RowIn    :  pByteArray;
+
+    iplImg   :  PIplImage;
+    iWidth   :  Integer;
+    iHeight  :  Integer;
+    iWidthstep: Integer;
+    iData    :  Pointer;
+
+{$ifdef LCL}
+    lazImg   : TLazIntfImage;
+{$endif}
+BEGIN
+  TRY
+    iplImg:=pCvMatToIplImage(matImg);
+    assert((iplimg.Depth = 8) and (iplimg.NChannels = 3),
+                'Not a 24 bit color Opencv image!');
+    iHeight:=iplimg.Height;
+    iWidth:=iplimg.Width;
+    iData:=iplimg.ImageData;
+    iWidthstep := iplImg.WidthStep;
+    bitmap.Height := iHeight;
+    bitmap.Width := iWidth;
+    bitmap.PixelFormat:=pf24bit;
+{$ifdef LCL}
+    lazImg := TLazIntfImage.Create(iWidth, iHeight);
+
+    lazImg.LoadFromBitmap(bitmap.BitmapHandle, bitmap.MaskHandle);
+{$endif}
+    // origin BL = Bottom-Left
+    if (iplImg.ChannelSeq = 'BGR')
+        and (iplimg.Origin = IPL_ORIGIN_BL) then
+    begin
+{$ifdef LCL}
+        offset := longint(iData) - iWidthStep;
+        FOR j := 0 TO Bitmap.Height-1 DO
+        BEGIN
+          RowIn  := lazImg.GetDataLineStart(bitmap.Height -1 - j);
+          offset := offset + iWidthStep;
+          dataByte := pbytearray( offset);
+          CopyMemory(rowin, dataByte, iWidthStep);
+        END;
+{$else}
+        RowIn  := Bitmap.Scanline[bitmap.height -1 ];
+        dataByte := pbytearray(iData);
+       {direct copy of the iplImage row bytes to bitmap row}
+        CopyMemory(rowin, dataByte, iplImg.ImageSize);
+{$endif}
+    end else
+{$ifdef LCL}
+      FOR j := 0 TO Bitmap.Height-1 DO
+      BEGIN
+        RowIn  := lazImg.GetDataLineStart(j );
+        offset := longint(iData) + iWidthStep * j;
+        dataByte := pbytearray( offset);
+        CopyMemory(rowin, dataByte, iWidthStep);
+      END;
+{$else}
+     FOR j := 0 TO Bitmap.Height-1   DO
+     BEGIN
+        RowIn  := Bitmap.Scanline[j ];
+        offset := longint(iData) + iWidthStep * j;
+        dataByte := pbytearray( offset);
+        try
+         CopyMemory(rowin, dataByte, iWidthStep);
+        except
+          on E: Exception do
+          begin
+               raise  Exception.Create('MatImage2Bitmap- error in CopyMemory- ' + e.Message);
+          end;
+        end;
+     END;
+{$endif}
+{$ifdef LCL}
+    bitmap.LoadFromIntfImage(lazImg);
+    lazImg.Free;
+{$endif}
+    pCvIplImageDelete(iplImg);
+    exit;
+  Except
+        on E: Exception do
+        begin
+             raise  Exception.Create('MatImage2Bitmap- error - ' + e.Message);
+        end;
+  END
+END; {MatImage2Bitmap}
+
+{-----------------------------------------------------------------------------
+  Procedure:  Bitmap2MatImage
+  Author:     G. De Sanctis
+  Date:       9/2/2023
+  Arguments:  matImg: PCvMat_t ; bitmap: TBitmap
+  Description:  convert a Windows bitmap (24 bit) to a Mat image
+-----------------------------------------------------------------------------}
+procedure Bitmap2MatImage(matImage: PCvMat_t;  bitmap: TBitmap);
+  VAR
+    j        :  Integer;
+    dataByte :  PByteArray;
+    RowIn    :  pByteArray;
+    offset   :  longint;
+    iplImg   :  PIplImage;
+    iWidthstep: Integer;
+    iData    :  Pointer;
+
+{$ifdef LCL}
+    lazImg: TLazIntfImage;
+{$endif}
+BEGIN
+  TRY
+    iplImg:=pCvMatToIplImage(matImage);
+    assert((iplImg.Depth = 8) and (iplImg.NChannels = 3),
+                'Not a 24 bit color iplImage!');
+    assert((bitmap.pixelFormat = pf24bit) ,
+                'Not a 24 bit color BMP bitmap!');
+
+    iData:=iplimg.ImageData;
+    iWidthstep := iplImg.WidthStep;
+
+
+
+{$ifdef LCL}
+    lazImg := TLazIntfImage.Create(bitmap.Width, bitmap.Height);
+    lazImg.LoadFromBitmap(bitmap.Handle, bitmap.MaskHandle);
+//    RowIn  := lazImg.GetDataLineStart(bitmap.height -1 );
+      FOR j := 0 TO Bitmap.Height-1 DO
+      BEGIN
+        RowIn  := lazImg.GetDataLineStart(j );
+        offset := longint(iData) + iWidthStep * j;
+        dataByte := pbytearray( offset);
+        CopyMemory(dataByte, rowin, iWidthStep);
+      END;
+{$else}
+     FOR j := 0 TO Bitmap.Height-1   DO
+     BEGIN
+        RowIn  := Bitmap.Scanline[j ];
+        offset := longint(iData) + iWidthStep * j;
+        dataByte := pbytearray( offset);
+        try
+         CopyMemory(dataByte, rowin, iWidthStep);
+        except
+          on E: Exception do
+          begin
+               raise  Exception.Create('Bitmap2MatImage- error in CopyMemory- ' + e.Message);
+          end;
+        end;
+     END;
+{$endif}
+{$ifdef LCL}
+    lazImg.Free;
+{$endif}
+    pCvIplImageDelete(iplImg);
+  Except
+        on E: Exception do
+        begin
+             raise  Exception.Create('Bitmap2MatImage- error - ' + e.Message);
+        end;
+  END
+END; {Bitmap2MatImage}
+
+function  pCvMorphologyDefaultBordeValue(): PCvScalar_t;
+begin
+  Result := CvScalar_(MaxDouble, MaxDouble, MaxDouble, MaxDouble);
+end;
+
+
 {****************************************************************************}
+initialization
 begin
     pCvRedirectException(@cvexception);
 
@@ -548,4 +772,21 @@ begin
 {$IFDEF FPC}
     SetExceptionMask(GetExceptionMask + [exOverflow,exZeroDivide,exInvalidOp]);
 {$ENDIF}
+  pCvDefaultMat:=pCvMatCreateEmpty();
+  pCvDefaultSize:=pCvSizeCreate();
+  pCvDefaultPoint:=pCvPointCreate();
+  pCvPoint_1_1:=CvPoint_(-1,-1);
+  pCvDefaultScalar:=pCvScalarCreate();
+
+end;
+
+finalization
+begin
+  pCvMatDelete(pCvDefaultMat);
+  pCvSizeDelete(pCvDefaultSize);
+  pCvPointDelete(pCvDefaultPoint);
+  pCvPointDelete(pCvPoint_1_1);
+  pCvScalarDelete(pCvDefaultScalar);
+end;
+
 end.
