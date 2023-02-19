@@ -806,7 +806,7 @@ void                      pCvellipse2(Mat_t* img, RotatedRect_t* box, Scalar_t* 
 void                      pCvellipse2Poly(Point_t* center, Size_t* axes, int angle, int arcStart, int arcEnd, int delta, vector_Point* pts);
 void                      pCvequalizeHist(Mat_t* src, Mat_t* dst);
 void                      pCverode(Mat_t* src, Mat_t* dst, Mat_t* kernel, Point_t* anchor /* default: Point(-1,-1) */, int iterations /* default: 1 */, int borderType /* default: BORDER_CONSTANT */, Scalar_t* borderValue /* default: morphologyDefaultBorderValue() */);
-int                       pCvestimateAffine3D(Mat_t* src, Mat_t* dst, Mat_t* out, Mat_t* inliers, double ransacThreshold /* default: 3 */, double confidence /* default: 0.99 */);
+int                       pCvestimateAffine3D(Mat_t* src, Mat_t* dst, Mat_t* _out, Mat_t* inliers, double ransacThreshold /* default: 3 */, double confidence /* default: 0.99 */);
 Mat_t*                    pCvestimateRigidTransform(Mat_t* src, Mat_t* dst, bool fullAffine);
 void                      pCvexp(Mat_t* src, Mat_t* dst);
 void                      pCvextractChannel(Mat_t* src, Mat_t* dst, int coi);

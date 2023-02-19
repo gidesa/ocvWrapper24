@@ -185,7 +185,7 @@ void KeyPoint_cpy(KeyPoint_t* dest, const KeyPoint src) {
 
 CVAPI(string_t*)   pCvStringCreate(const int nrchar)
 {
-	string_t* wrapper = new string_t;
+	string_t* wrapper = new string_t();
 
 try {
 	wrapper->v = (char*)cvAlloc((nrchar + 1) * sizeof(char));
@@ -213,7 +213,7 @@ CVAPI(struct  Mat_t*)   pCvMatCreate(int ndims, const int* dims, int mtype)
 {
 	struct Mat_t* wrapper = 0;
 try {
-		wrapper = new Mat_t;
+		wrapper = new Mat_t();
 		wrapper->v = new cv::Mat(ndims, dims, mtype, 0.0f);
 }
 	catch (std::exception &e) {
@@ -227,7 +227,7 @@ CVAPI(struct  Mat_t*)   pCvMatCreateEmpty()
 {
 	struct Mat_t* wrapper = 0;
 try {
-	wrapper = new Mat_t;
+	wrapper = new Mat_t();
 	wrapper->v = new cv::Mat();
 }
 catch (std::exception &e) {
@@ -241,7 +241,7 @@ CVAPI(struct  Mat_t*)   pCvMat2dCreate(int cols, int rows, int mtype)
 {
 	struct Mat_t* wrapper = 0;
 try {
-	wrapper = new Mat_t;
+	wrapper = new Mat_t();
 	wrapper->v = new cv::Mat(cols, rows, mtype, 0.0f);
 }
 	catch (std::exception &e) {
@@ -255,7 +255,7 @@ CVAPI(struct  Mat_t*)   pCvMatImageCreate(int width, int height, int mtype)
 {
 	struct Mat_t* wrapper = 0;
 try {
-		wrapper = new Mat_t;
+		wrapper = new Mat_t();
 		wrapper->v = new cv::Mat(Size(width, height), mtype, Scalar(0.0f));
 }
 	catch (std::exception &e) {
@@ -269,10 +269,9 @@ CVAPI(struct  Mat_t*)   pCvMatROI(Mat_t* src, CvRectS* roi)
 {
 	struct Mat_t* wrapper = 0;
 try {
-		wrapper = new Mat_t;
+	wrapper = new Mat_t();  
 	wrapper->v = new cv::Mat();
-	Mat m = (*src->v)(cv::Rect(roi->x, roi->y, roi->width, roi->height));
-	Mat_cpy(wrapper, m);
+	*wrapper->v =  (*src->v)(cv::Rect(roi->x, roi->y, roi->width, roi->height) );
 }
 	catch (std::exception &e) {
 		exceptionDisplay(e.what());
@@ -529,7 +528,7 @@ CVAPI(struct Mat_t*)   pCvMatGetRow(struct Mat_t* wrapper, int nrow) {
 try {
 	Mat tr = (*wrapper->v).row(nrow);
 	Mat*  t = new Mat();
-	retval = new Mat_t;
+	retval = new Mat_t();
 	retval->v = t;
 	Mat_cpy(retval, tr);
 }
@@ -577,7 +576,7 @@ catch (std::exception &e) {
 // ---------------------- Size class wrapper ---------------------------------
 CVAPI(Size_t*)   pCvSizeCreate()
 {
-	Size_t* wrapper = new  Size_t;
+	Size_t* wrapper = new  Size_t();
 	try {
 		wrapper->v = new  Size();
 	}
@@ -621,7 +620,7 @@ CVAPI(void)   pCvSizeDelete(Size_t* wrapper)
 // ---------------------- Rect class wrapper ---------------------------------
 CVAPI(Rect_t*)   pCvRectCreate()
 {
-	Rect_t* wrapper = new  Rect_t;
+	Rect_t* wrapper = new  Rect_t();
 	try {
 		wrapper->v = new  Rect();
 	}
@@ -669,7 +668,7 @@ CVAPI(void)   pCvRectDelete(Rect_t* wrapper)
 // ---------------------- Range class wrapper ---------------------------------
 CVAPI(Range_t*)   pCvRangeCreate()
 {
-	Range_t* wrapper = new  Range_t;
+	Range_t* wrapper = new  Range_t();
 	try {
 		wrapper->v = new  Range();
 	}
@@ -713,7 +712,7 @@ CVAPI(void)   pCvRangeDelete(Range_t* wrapper)
 // ---------------------- CvSlice class wrapper ---------------------------------
 CVAPI(CvSlice_t*)   pCvCvSliceCreate()
 {
-	CvSlice_t* wrapper = new  CvSlice_t;
+	CvSlice_t* wrapper = new  CvSlice_t();
 	try {
 		wrapper->v = new  CvSlice();
 	}
@@ -757,7 +756,7 @@ CVAPI(void)   pCvCvSliceDelete(CvSlice_t* wrapper)
 // ---------------------- Point class wrapper ---------------------------------
 CVAPI(Point_t*)   pCvPointCreate()
 {
-	Point_t* wrapper = new  Point_t;
+	Point_t* wrapper = new  Point_t();
 	try {
 		wrapper->v = new  Point();
 	}
@@ -803,7 +802,7 @@ CVAPI(void)   pCvPointFromStruct(Point_t* wrapper, CvPointS* src)
 // ---------------------- Point2f class wrapper ---------------------------------
 CVAPI(Point2f_t*)   pCvPoint2fCreate()
 {
-	Point2f_t* wrapper = new  Point2f_t;
+	Point2f_t* wrapper = new  Point2f_t();
 	try {
 		wrapper->v = new  Point2f();
 	}
@@ -849,7 +848,7 @@ CVAPI(void)   pCvPoint2fFromStruct(Point2f_t* wrapper, CvPoint2fS* src)
 // ---------------------- Point2d class wrapper ---------------------------------
 CVAPI(Point2d_t*)   pCvPoint2dCreate()
 {
-	Point2d_t* wrapper = new  Point2d_t;
+	Point2d_t* wrapper = new  Point2d_t();
 	try {
 		wrapper->v = new  Point2d();
 	}
@@ -893,7 +892,7 @@ CVAPI(void)   pCvPoint2dDelete(Point2d_t* wrapper)
 // ---------------------- Vec2d class wrapper ---------------------------------
 CVAPI(Vec2d_t*)   pCvVec2dCreate()
 {
-	Vec2d_t* wrapper = new  Vec2d_t;
+	Vec2d_t* wrapper = new  Vec2d_t();
 	try {
 		wrapper->v = new  Vec2d();
 	}
@@ -937,7 +936,7 @@ CVAPI(void)   pCvVec2dDelete(Vec2d_t* wrapper)
 // ---------------------- Vec3d class wrapper ---------------------------------
 CVAPI(Vec3d_t*)   pCvVec3dCreate()
 {
-	Vec3d_t* wrapper = new  Vec3d_t;
+	Vec3d_t* wrapper = new  Vec3d_t();
 	try {
 		wrapper->v = new  Vec3d();
 	}
@@ -983,7 +982,7 @@ CVAPI(void)   pCvVec3dDelete(Vec3d_t* wrapper)
 // ---------------------- Vec3b class wrapper ---------------------------------
 CVAPI(Vec3b_t*)   pCvVec3bCreate()
 {
-	Vec3b_t* wrapper = new  Vec3b_t;
+	Vec3b_t* wrapper = new  Vec3b_t();
 	try {
 		wrapper->v = new  Vec3b();
 	}
@@ -1029,7 +1028,7 @@ CVAPI(void)   pCvVec3bDelete(Vec3b_t* wrapper)
 // ---------------------- Vec4f class wrapper ---------------------------------
 CVAPI(Vec4f_t*)   pCvVec4fCreate()
 {
-	Vec4f_t* wrapper = new  Vec4f_t;
+	Vec4f_t* wrapper = new  Vec4f_t();
 	try {
 		wrapper->v = new  Vec4f();
 	}
@@ -1077,7 +1076,7 @@ CVAPI(void)   pCvVec4fDelete(Vec4f_t* wrapper)
 // ---------------------- Vec6f class wrapper ---------------------------------
 CVAPI(Vec6f_t*)   pCvVec6fCreate()
 {
-	Vec6f_t* wrapper = new  Vec6f_t;
+	Vec6f_t* wrapper = new  Vec6f_t();
 	try {
 		wrapper->v = new  Vec6f();
 	}
@@ -1129,7 +1128,7 @@ CVAPI(void)   pCvVec6fDelete(Vec6f_t* wrapper)
 // ---------------------- Scalar class wrapper ---------------------------------
 CVAPI(Scalar_t*)   pCvScalarCreate()
 {
-	Scalar_t* wrapper = new  Scalar_t;
+	Scalar_t* wrapper = new  Scalar_t();
 	try {
 		wrapper->v = new  Scalar();
 	}
@@ -1177,7 +1176,7 @@ CVAPI(void)   pCvScalarDelete(Scalar_t* wrapper)
 // ---------------------- RotatedRect class wrapper ---------------------------------
 CVAPI(RotatedRect_t*)   pCvRotatedRectCreate()
 {
-	RotatedRect_t* wrapper = new  RotatedRect_t;
+	RotatedRect_t* wrapper = new  RotatedRect_t();
 	try {
 		wrapper->v = new  RotatedRect();
 	}
@@ -1227,7 +1226,7 @@ CVAPI(void)   pCvRotatedRectDelete(RotatedRect_t* wrapper)
 // ---------------------- CvDTreeNode class wrapper ---------------------------------
 CVAPI(CvDTreeNode_t*)   pCvCvDTreeNodeCreate()
 {
-	CvDTreeNode_t* wrapper = new  CvDTreeNode_t;
+	CvDTreeNode_t* wrapper = new  CvDTreeNode_t();
 	try {
 		wrapper->v = new  CvDTreeNode();
 	}
@@ -1309,7 +1308,7 @@ CVAPI(void)   pCvCvDTreeNodeDelete(CvDTreeNode_t* wrapper)
 // ---------------------- TermCriteria class wrapper ---------------------------------
 CVAPI(TermCriteria_t*)   pCvTermCriteriaCreate()
 {
-	TermCriteria_t* wrapper = new  TermCriteria_t;
+	TermCriteria_t* wrapper = new  TermCriteria_t();
 	try {
 		wrapper->v = new  TermCriteria();
 	}
@@ -1355,7 +1354,7 @@ CVAPI(void)   pCvTermCriteriaDelete(TermCriteria_t* wrapper)
 // ---------------------- CvTermCriteria class wrapper ---------------------------------
 CVAPI(CvTermCriteria_t*)   pCvCvTermCriteriaCreate()
 {
-	CvTermCriteria_t* wrapper = new  CvTermCriteria_t;
+	CvTermCriteria_t* wrapper = new  CvTermCriteria_t();
 	try {
 		wrapper->v = new  CvTermCriteria();
 	}
@@ -1401,7 +1400,7 @@ CVAPI(void)   pCvCvTermCriteriaDelete(CvTermCriteria_t* wrapper)
 // ---------------------- Moments class wrapper ---------------------------------
 CVAPI(Moments_t*)   pCvMomentsCreate()
 {
-	Moments_t* wrapper = new  Moments_t;
+	Moments_t* wrapper = new  Moments_t();
 	try {
 		wrapper->v = new  Moments();
 	}
@@ -1487,7 +1486,7 @@ CVAPI(void)   pCvMomentsDelete(Moments_t* wrapper)
 // ---------------------- IndexParams class wrapper ---------------------------------
 CVAPI(IndexParams_t*)   pCvIndexParamsCreate()
 {
-	IndexParams_t* wrapper = new  IndexParams_t;
+	IndexParams_t* wrapper = new  IndexParams_t();
 	try {
 		wrapper->v = new  flann::IndexParams();
 	}
@@ -1506,7 +1505,7 @@ CVAPI(void)   pCvIndexParamsDelete(IndexParams_t* wrapper)
 // ---------------------- SearchParams class wrapper ---------------------------------
 CVAPI(SearchParams_t*)   pCvSearchParamsCreate()
 {
-	SearchParams_t* wrapper = new  SearchParams_t;
+	SearchParams_t* wrapper = new  SearchParams_t();
 	try {
 		wrapper->v = new  flann::SearchParams();
 	}
@@ -1525,7 +1524,7 @@ CVAPI(void)   pCvSearchParamsDelete(SearchParams_t* wrapper)
 // ---------------------- CvSVMParams class wrapper ---------------------------------
 CVAPI(CvSVMParams_t*)   pCvCvSVMParamsCreate()
 {
-	CvSVMParams_t* wrapper = new  CvSVMParams_t;
+	CvSVMParams_t* wrapper = new  CvSVMParams_t();
 	try {
 		wrapper->v = new  CvSVMParams();
 	}
@@ -1544,7 +1543,7 @@ CVAPI(void)   pCvCvSVMParamsDelete(CvSVMParams_t* wrapper)
 // ---------------------- CvParamGrid class wrapper ---------------------------------
 CVAPI(CvParamGrid_t*)   pCvCvParamGridCreate()
 {
-	CvParamGrid_t* wrapper = new  CvParamGrid_t;
+	CvParamGrid_t* wrapper = new  CvParamGrid_t();
 	try {
 		wrapper->v = new  CvParamGrid();
 	}
@@ -1563,7 +1562,7 @@ CVAPI(void)   pCvCvParamGridDelete(CvParamGrid_t* wrapper)
 // ---------------------- CvGBTreesParams class wrapper ---------------------------------
 CVAPI(CvGBTreesParams_t*)   pCvCvGBTreesParamsCreate()
 {
-	CvGBTreesParams_t* wrapper = new  CvGBTreesParams_t;
+	CvGBTreesParams_t* wrapper = new  CvGBTreesParams_t();
 	try {
 		wrapper->v = new  CvGBTreesParams();
 	}
@@ -1582,7 +1581,7 @@ CVAPI(void)   pCvCvGBTreesParamsDelete(CvGBTreesParams_t* wrapper)
 // ---------------------- BackgroundSubtractor class wrapper ---------------------------------
 CVAPI(BackgroundSubtractor_t*)   pCvBackgroundSubtractorCreate()
 {
-	BackgroundSubtractor_t* wrapper = new  BackgroundSubtractor_t;
+	BackgroundSubtractor_t* wrapper = new  BackgroundSubtractor_t();
 	try {
 		wrapper->v = new  BackgroundSubtractor();
 	}
@@ -1601,7 +1600,7 @@ CVAPI(void)   pCvBackgroundSubtractorDelete(BackgroundSubtractor_t* wrapper)
 // ---------------------- CvStatModel class wrapper ---------------------------------
 CVAPI(CvStatModel_t*)   pCvCvStatModelCreate()
 {
-	CvStatModel_t* wrapper = new  CvStatModel_t;
+	CvStatModel_t* wrapper = new  CvStatModel_t();
 	try {
 		wrapper->v = new  CvStatModel();
 	}

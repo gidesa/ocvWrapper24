@@ -1345,7 +1345,7 @@ try {
 
 CVAPI(Mat_t*) pCvKDTreeGet_points(KDTree_t* p)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try {
     Mat tr =   (p->v->points);
     Mat*  t = new Mat();
@@ -1433,7 +1433,7 @@ try {
 }
 CVAPI(FileNode_t*)   pCvFileStoragegetFirstTopLevelNode(struct  FileStorage_t* wrapper)
 {
-   FileNode_t* retval = new FileNode_t;
+   FileNode_t* retval = new FileNode_t();
 try {
  
     retval->v = &wrapper->v->getFirstTopLevelNode();
@@ -1472,7 +1472,7 @@ try {
 }
 CVAPI(FileNode_t*)   pCvFileStoragegetelem(struct  FileStorage_t* wrapper, c_string nodename)
 {
-   FileNode_t* retval = new FileNode_t;
+   FileNode_t* retval = new FileNode_t();
 try {
  
     retval->v = &wrapper->v->operator[](nodename);
@@ -1497,7 +1497,7 @@ try {
 }
 CVAPI(string_t*)   pCvFileStoragereleaseAndGetString(struct  FileStorage_t* wrapper)
 {
-    string_t* retval = new string_t;
+    string_t* retval = new string_t();
  try {
  
     const string  sr = wrapper->v->releaseAndGetString();
@@ -1514,7 +1514,7 @@ CVAPI(string_t*)   pCvFileStoragereleaseAndGetString(struct  FileStorage_t* wrap
 }
 CVAPI(FileNode_t*)   pCvFileStorageroot(struct  FileStorage_t* wrapper, int streamidx)
 {
-   FileNode_t* retval = new FileNode_t;
+   FileNode_t* retval = new FileNode_t();
 try {
  
     retval->v = &wrapper->v->root(streamidx);
@@ -1631,7 +1631,7 @@ try {
 }
 CVAPI(string_t*)   pCvFileNodename(struct  FileNode_t* wrapper)
 {
-    string_t* retval = new string_t;
+    string_t* retval = new string_t();
  try {
  
     const string  sr = wrapper->v->name();
@@ -1648,7 +1648,7 @@ CVAPI(string_t*)   pCvFileNodename(struct  FileNode_t* wrapper)
 }
 CVAPI(FileNode_t*)   pCvFileNodegetelem(struct  FileNode_t* wrapper, c_string nodename)
 {
-   FileNode_t* retval = new FileNode_t;
+   FileNode_t* retval = new FileNode_t();
 try {
  
     retval->v = &wrapper->v->operator[](nodename);
@@ -1661,7 +1661,7 @@ try {
 }
 CVAPI(FileNode_t*)   pCvFileNodegetelem2(struct  FileNode_t* wrapper, int i)
 {
-   FileNode_t* retval = new FileNode_t;
+   FileNode_t* retval = new FileNode_t();
 try {
  
     retval->v = &wrapper->v->operator[](i);
@@ -1753,7 +1753,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvAlgorithmgetMat(struct  Algorithm_t* wrapper, string_t* name)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = wrapper->v->getMat(name->v);
     Mat*  t = new Mat();
@@ -1768,7 +1768,7 @@ try {
 }
 CVAPI(vector_Mat*)   pCvAlgorithmgetMatVector(struct  Algorithm_t* wrapper, string_t* name)
 {
-vector_Mat* retval = new vector_Mat;
+vector_Mat* retval = new vector_Mat();
 try {
  
     vector_Mat tr = wrapper->v->getMatVector(name->v);
@@ -1794,7 +1794,7 @@ try {
 }
 CVAPI(string_t*)   pCvAlgorithmgetString(struct  Algorithm_t* wrapper, string_t* name)
 {
-    string_t* retval = new string_t;
+    string_t* retval = new string_t();
  try {
  
     const string  sr = wrapper->v->getString(name->v);
@@ -1811,7 +1811,7 @@ CVAPI(string_t*)   pCvAlgorithmgetString(struct  Algorithm_t* wrapper, string_t*
 }
 CVAPI(string_t*)   pCvAlgorithmparamHelp(struct  Algorithm_t* wrapper, string_t* name)
 {
-    string_t* retval = new string_t;
+    string_t* retval = new string_t();
  try {
  
     const string  sr = wrapper->v->paramHelp(name->v);
@@ -2315,7 +2315,7 @@ try {
 
 CVAPI(CvTermCriteria_t*) pCvCvSVMParamsGet_term_crit(CvSVMParams_t* p)
 {
-    CvTermCriteria_t*  retval = new CvTermCriteria_t;
+    CvTermCriteria_t*  retval = new CvTermCriteria_t();
 try {
     CvTermCriteria tr =   (p->v->term_crit);
     CvTermCriteria*  t = new CvTermCriteria();
@@ -2477,7 +2477,7 @@ try {
 }
 CVAPI(Vec2d_t*)   pCvEMpredict(struct  EM_t* wrapper, Mat_t* sample, Mat_t* probs)
 {
-    Vec2d_t*  retval = new Vec2d_t;
+    Vec2d_t*  retval = new Vec2d_t();
 try { 
     Vec2d tr = wrapper->v->predict(*sample->v, *probs->v);
     Vec2d*  t = new Vec2d();
@@ -2727,7 +2727,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvCvDTreegetVarImportance(struct  CvDTree_t* wrapper)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = wrapper->v->getVarImportance();
     Mat*  t = new Mat();
@@ -2754,7 +2754,7 @@ try {
 }
 CVAPI(CvDTreeNode_t*)   pCvCvDTreepredict(struct  CvDTree_t* wrapper, Mat_t* sample, Mat_t* missingDataMask, bool preprocessedInput)
 {
-    CvDTreeNode_t*  retval = new CvDTreeNode_t;
+    CvDTreeNode_t*  retval = new CvDTreeNode_t();
 try { 
     CvDTreeNode* tr = wrapper->v->predict(*sample->v, *missingDataMask->v, preprocessedInput);
     CvDTreeNode*  t = new CvDTreeNode();
@@ -2841,7 +2841,7 @@ try {
 
 CVAPI(CvTermCriteria_t*) pCvCvRTParamsGet_term_crit(CvRTParams_t* p)
 {
-    CvTermCriteria_t*  retval = new CvTermCriteria_t;
+    CvTermCriteria_t*  retval = new CvTermCriteria_t();
 try {
     CvTermCriteria tr =   (p->v->term_crit);
     CvTermCriteria*  t = new CvTermCriteria();
@@ -2877,7 +2877,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvCvRTreesgetVarImportance(struct  CvRTrees_t* wrapper)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = wrapper->v->getVarImportance();
     Mat*  t = new Mat();
@@ -2967,7 +2967,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvCvERTreesgetVarImportance(struct  CvERTrees_t* wrapper)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = wrapper->v->getVarImportance();
     Mat*  t = new Mat();
@@ -3503,7 +3503,7 @@ try {
 
 CVAPI(CvTermCriteria_t*) pCvCvANN_MLP_TrainParamsGet_term_crit(CvANN_MLP_TrainParams_t* p)
 {
-    CvTermCriteria_t*  retval = new CvTermCriteria_t;
+    CvTermCriteria_t*  retval = new CvTermCriteria_t();
 try {
     CvTermCriteria tr =   (p->v->term_crit);
     CvTermCriteria*  t = new CvTermCriteria();
@@ -3736,7 +3736,7 @@ try {
 }
 CVAPI(Point2f_t*)   pCvSubdiv2DgetVertex(struct  Subdiv2D_t* wrapper, int vertex, int* firstEdge)
 {
-    Point2f_t*  retval = new Point2f_t;
+    Point2f_t*  retval = new Point2f_t();
 try { 
     Point2f tr = wrapper->v->getVertex(vertex, firstEdge);
     Point2f*  t = new Point2f();
@@ -4199,7 +4199,7 @@ try {
 
 CVAPI(Point2f_t*) pCvKeyPointGet_pt(KeyPoint_t* p)
 {
-    Point2f_t*  retval = new Point2f_t;
+    Point2f_t*  retval = new Point2f_t();
 try {
     Point2f tr =   (p->v->pt);
     Point2f*  t = new Point2f();
@@ -5077,7 +5077,7 @@ try {
 }
 CVAPI(vector_Mat*)   pCvDescriptorMatchergetTrainDescriptors(struct  DescriptorMatcher_t* wrapper)
 {
-vector_Mat* retval = new vector_Mat;
+vector_Mat* retval = new vector_Mat();
 try {
  
     vector_Mat tr = wrapper->v->getTrainDescriptors();
@@ -5188,7 +5188,7 @@ try {
 }
 CVAPI(vector_Mat*)   pCvBFMatchergetTrainDescriptors(struct  BFMatcher_t* wrapper)
 {
-vector_Mat* retval = new vector_Mat;
+vector_Mat* retval = new vector_Mat();
 try {
  
     vector_Mat tr = wrapper->v->getTrainDescriptors();
@@ -5299,7 +5299,7 @@ try {
 }
 CVAPI(vector_Mat*)   pCvFlannBasedMatchergetTrainDescriptors(struct  FlannBasedMatcher_t* wrapper)
 {
-vector_Mat* retval = new vector_Mat;
+vector_Mat* retval = new vector_Mat();
 try {
  
     vector_Mat tr = wrapper->v->getTrainDescriptors();
@@ -5410,7 +5410,7 @@ try {
 }
 CVAPI(vector_Mat*)   pCvBOWTrainergetDescriptors(struct  BOWTrainer_t* wrapper)
 {
-vector_Mat* retval = new vector_Mat;
+vector_Mat* retval = new vector_Mat();
 try {
  
     vector_Mat tr = wrapper->v->getDescriptors();
@@ -5448,7 +5448,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvBOWKMeansTrainercluster(struct  BOWKMeansTrainer_t* wrapper)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = wrapper->v->cluster();
     Mat*  t = new Mat();
@@ -5463,7 +5463,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvBOWKMeansTrainercluster2(struct  BOWKMeansTrainer_t* wrapper, Mat_t* descriptors)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = wrapper->v->cluster(*descriptors->v);
     Mat*  t = new Mat();
@@ -5491,7 +5491,7 @@ try {
 }
 CVAPI(vector_Mat*)   pCvBOWKMeansTrainergetDescriptors(struct  BOWKMeansTrainer_t* wrapper)
 {
-vector_Mat* retval = new vector_Mat;
+vector_Mat* retval = new vector_Mat();
 try {
  
     vector_Mat tr = wrapper->v->getDescriptors();
@@ -5543,7 +5543,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvBOWImgDescriptorExtractorgetVocabulary(struct  BOWImgDescriptorExtractor_t* wrapper)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = wrapper->v->getVocabulary();
     Mat*  t = new Mat();
@@ -5570,7 +5570,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvKalmanFiltercorrect(struct  KalmanFilter_t* wrapper, Mat_t* measurement)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = wrapper->v->correct(*measurement->v);
     Mat*  t = new Mat();
@@ -5585,7 +5585,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvKalmanFilterpredict(struct  KalmanFilter_t* wrapper, Mat_t* control)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = wrapper->v->predict(*control->v);
     Mat*  t = new Mat();
@@ -5700,7 +5700,7 @@ try {
 
 CVAPI(Size_t*) pCvHOGDescriptorGet_blockSize(HOGDescriptor_t* p)
 {
-    Size_t*  retval = new Size_t;
+    Size_t*  retval = new Size_t();
 try {
     Size tr =   (p->v->blockSize);
     Size*  t = new Size();
@@ -5715,7 +5715,7 @@ try {
 
 CVAPI(Size_t*) pCvHOGDescriptorGet_blockStride(HOGDescriptor_t* p)
 {
-    Size_t*  retval = new Size_t;
+    Size_t*  retval = new Size_t();
 try {
     Size tr =   (p->v->blockStride);
     Size*  t = new Size();
@@ -5730,7 +5730,7 @@ try {
 
 CVAPI(Size_t*) pCvHOGDescriptorGet_cellSize(HOGDescriptor_t* p)
 {
-    Size_t*  retval = new Size_t;
+    Size_t*  retval = new Size_t();
 try {
     Size tr =   (p->v->cellSize);
     Size*  t = new Size();
@@ -5836,7 +5836,7 @@ try {
 
 CVAPI(Size_t*) pCvHOGDescriptorGet_winSize(HOGDescriptor_t* p)
 {
-    Size_t*  retval = new Size_t;
+    Size_t*  retval = new Size_t();
 try {
     Size tr =   (p->v->winSize);
     Size*  t = new Size();

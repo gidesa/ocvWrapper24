@@ -26,7 +26,7 @@ try {
 }
 CVAPI(RotatedRect_t*)   pCvCamShift(Mat_t* probImage, Rect_t* window, TermCriteria_t* criteria)
 {
-    RotatedRect_t*  retval = new RotatedRect_t;
+    RotatedRect_t*  retval = new RotatedRect_t();
 try { 
     RotatedRect tr = cv::CamShift(*probImage->v, *window->v, *criteria->v);
     RotatedRect*  t = new RotatedRect();
@@ -121,7 +121,7 @@ try {
 }
 CVAPI(vector_float*)   pCvHOGDescriptor_getDaimlerPeopleDetector()
 {
-vector_float* retval = new vector_float;
+vector_float* retval = new vector_float();
 try {
  
     vector_float tr = HOGDescriptor::getDaimlerPeopleDetector();
@@ -135,7 +135,7 @@ try {
 }
 CVAPI(vector_float*)   pCvHOGDescriptor_getDefaultPeopleDetector()
 {
-vector_float* retval = new vector_float;
+vector_float* retval = new vector_float();
 try {
  
     vector_float tr = HOGDescriptor::getDefaultPeopleDetector();
@@ -295,7 +295,7 @@ try {
 }
 CVAPI(Vec3d_t*)   pCvRQDecomp3x3(Mat_t* src, Mat_t* mtxR, Mat_t* mtxQ, Mat_t* Qx, Mat_t* Qy, Mat_t* Qz)
 {
-    Vec3d_t*  retval = new Vec3d_t;
+    Vec3d_t*  retval = new Vec3d_t();
 try { 
     Vec3d tr = cv::RQDecomp3x3(*src->v, *mtxR->v, *mtxQ->v, *Qx->v, *Qy->v, *Qz->v);
     Vec3d*  t = new Vec3d();
@@ -624,7 +624,7 @@ try {
 }
 CVAPI(Rect_t*)   pCvboundingRect(Mat_t* points)
 {
-    Rect_t*  retval = new Rect_t;
+    Rect_t*  retval = new Rect_t();
 try { 
     Rect tr = cv::boundingRect(*points->v);
     Rect*  t = new Rect();
@@ -1462,12 +1462,12 @@ try {
     return;
 
 }
-CVAPI(int)   pCvestimateAffine3D(Mat_t* src, Mat_t* dst, Mat_t* out, Mat_t* inliers, double ransacThreshold, double confidence)
+CVAPI(int)   pCvestimateAffine3D(Mat_t* src, Mat_t* dst, Mat_t* _out, Mat_t* inliers, double ransacThreshold, double confidence)
 {
     int retval;
 try {
  
-    retval = cv::estimateAffine3D(*src->v, *dst->v, *out->v, *inliers->v, ransacThreshold, confidence);
+    retval = cv::estimateAffine3D(*src->v, *dst->v, *_out->v, *inliers->v, ransacThreshold, confidence);
 } catch (std::exception &e) {
       exceptionDisplay(e.what());
 };
@@ -1477,7 +1477,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvestimateRigidTransform(Mat_t* src, Mat_t* dst, bool fullAffine)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::estimateRigidTransform(*src->v, *dst->v, fullAffine);
     Mat*  t = new Mat();
@@ -1688,7 +1688,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvfindFundamentalMat(Mat_t* points1, Mat_t* points2, int method, double param1, double param2, Mat_t* mask)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::findFundamentalMat(*points1->v, *points2->v, method, param1, param2, *mask->v);
     Mat*  t = new Mat();
@@ -1703,7 +1703,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvfindHomography(Mat_t* srcPoints, Mat_t* dstPoints, int method, double ransacReprojThreshold, Mat_t* mask)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::findHomography(*srcPoints->v, *dstPoints->v, method, ransacReprojThreshold, *mask->v);
     Mat*  t = new Mat();
@@ -1730,7 +1730,7 @@ try {
 }
 CVAPI(RotatedRect_t*)   pCvfitEllipse(Mat_t* points)
 {
-    RotatedRect_t*  retval = new RotatedRect_t;
+    RotatedRect_t*  retval = new RotatedRect_t();
 try { 
     RotatedRect tr = cv::fitEllipse(*points->v);
     RotatedRect*  t = new RotatedRect();
@@ -1794,7 +1794,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvgetAffineTransform(Mat_t* src, Mat_t* dst)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::getAffineTransform(*src->v, *dst->v);
     Mat*  t = new Mat();
@@ -1809,7 +1809,7 @@ try {
 }
 CVAPI(string_t*)   pCvgetBuildInformation()
 {
-    string_t* retval = new string_t;
+    string_t* retval = new string_t();
  try {
  
     const string  sr = cv::getBuildInformation();
@@ -1839,7 +1839,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvgetDefaultNewCameraMatrix(Mat_t* cameraMatrix, Size_t* imgsize, bool centerPrincipalPoint)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::getDefaultNewCameraMatrix(*cameraMatrix->v, *imgsize->v, centerPrincipalPoint);
     Mat*  t = new Mat();
@@ -1866,7 +1866,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvgetGaborKernel(Size_t* ksize, double sigma, double theta, double lambd, double gamma, double psi, int ktype)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::getGaborKernel(*ksize->v, sigma, theta, lambd, gamma, psi, ktype);
     Mat*  t = new Mat();
@@ -1881,7 +1881,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvgetGaussianKernel(int ksize, double sigma, int ktype)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::getGaussianKernel(ksize, sigma, ktype);
     Mat*  t = new Mat();
@@ -1935,7 +1935,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvgetOptimalNewCameraMatrix(Mat_t* cameraMatrix, Mat_t* distCoeffs, Size_t* imageSize, double alpha, Size_t* newImgSize, Rect_t* validPixROI, bool centerPrincipalPoint)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::getOptimalNewCameraMatrix(*cameraMatrix->v, *distCoeffs->v, *imageSize->v, alpha, *newImgSize->v, validPixROI->v, centerPrincipalPoint);
     Mat*  t = new Mat();
@@ -1950,7 +1950,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvgetPerspectiveTransform(Mat_t* src, Mat_t* dst)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::getPerspectiveTransform(*src->v, *dst->v);
     Mat*  t = new Mat();
@@ -1977,7 +1977,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvgetRotationMatrix2D(Point2f_t* center, double angle, double scale)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::getRotationMatrix2D(*center->v, angle, scale);
     Mat*  t = new Mat();
@@ -1992,7 +1992,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvgetStructuringElement(int shape, Size_t* ksize, Point_t* anchor)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::getStructuringElement(shape, *ksize->v, *anchor->v);
     Mat*  t = new Mat();
@@ -2007,7 +2007,7 @@ try {
 }
 CVAPI(Size_t*)   pCvgetTextSize(string_t* text, int fontFace, double fontScale, int thickness, int* baseLine)
 {
-    Size_t*  retval = new Size_t;
+    Size_t*  retval = new Size_t();
 try { 
     Size tr = cv::getTextSize(text->v, fontFace, fontScale, thickness, baseLine);
     Size*  t = new Size();
@@ -2074,7 +2074,7 @@ try {
 }
 CVAPI(Rect_t*)   pCvgetValidDisparityROI(Rect_t* roi1, Rect_t* roi2, int minDisparity, int numberOfDisparities, int SADWindowSize)
 {
-    Rect_t*  retval = new Rect_t;
+    Rect_t*  retval = new Rect_t();
 try { 
     Rect tr = cv::getValidDisparityROI(*roi1->v, *roi2->v, minDisparity, numberOfDisparities, SADWindowSize);
     Rect*  t = new Rect();
@@ -2174,7 +2174,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvimdecode(Mat_t* buf, int flags)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::imdecode(*buf->v, flags);
     Mat*  t = new Mat();
@@ -2202,7 +2202,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvimread(string_t* filename, int flags)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::imread(filename->v, flags);
     Mat*  t = new Mat();
@@ -2254,7 +2254,7 @@ try {
 }
 CVAPI(Mat_t*)   pCvinitCameraMatrix2D(vector_Mat* objectPoints, vector_Mat* imagePoints, Size_t* imageSize, double aspectRatio)
 {
-    Mat_t*  retval = new Mat_t;
+    Mat_t*  retval = new Mat_t();
 try { 
     Mat tr = cv::initCameraMatrix2D(*objectPoints, *imagePoints, *imageSize->v, aspectRatio);
     Mat*  t = new Mat();
@@ -2516,7 +2516,7 @@ try {
 }
 CVAPI(Scalar_t*)   pCvmean(Mat_t* src, Mat_t* mask)
 {
-    Scalar_t*  retval = new Scalar_t;
+    Scalar_t*  retval = new Scalar_t();
 try { 
     Scalar tr = cv::mean(*src->v, *mask->v);
     Scalar*  t = new Scalar();
@@ -2592,7 +2592,7 @@ try {
 }
 CVAPI(RotatedRect_t*)   pCvminAreaRect(Mat_t* points)
 {
-    RotatedRect_t*  retval = new RotatedRect_t;
+    RotatedRect_t*  retval = new RotatedRect_t();
 try { 
     RotatedRect tr = cv::minAreaRect(*points->v);
     RotatedRect*  t = new RotatedRect();
@@ -2643,7 +2643,7 @@ try {
 }
 CVAPI(Moments_t*)   pCvmoments(Mat_t* _array, bool binaryImage)
 {
-    Moments_t*  retval = new Moments_t;
+    Moments_t*  retval = new Moments_t();
 try { 
     Moments tr = cv::moments(*_array->v, binaryImage);
     Moments*  t = new Moments();
@@ -2804,7 +2804,7 @@ try {
 }
 CVAPI(Point2d_t*)   pCvphaseCorrelate(Mat_t* src1, Mat_t* src2, Mat_t* window)
 {
-    Point2d_t*  retval = new Point2d_t;
+    Point2d_t*  retval = new Point2d_t();
 try { 
     Point2d tr = cv::phaseCorrelate(*src1->v, *src2->v, *window->v);
     Point2d*  t = new Point2d();
@@ -2819,7 +2819,7 @@ try {
 }
 CVAPI(Point2d_t*)   pCvphaseCorrelateRes(Mat_t* src1, Mat_t* src2, Mat_t* window, double* response)
 {
-    Point2d_t*  retval = new Point2d_t;
+    Point2d_t*  retval = new Point2d_t();
 try { 
     Point2d tr = cv::phaseCorrelateRes(*src1->v, *src2->v, *window->v, response);
     Point2d*  t = new Point2d();
@@ -3371,7 +3371,7 @@ try {
 }
 CVAPI(Scalar_t*)   pCvsumElems(Mat_t* src)
 {
-    Scalar_t*  retval = new Scalar_t;
+    Scalar_t*  retval = new Scalar_t();
 try { 
     Scalar tr = cv::sum(*src->v);
     Scalar*  t = new Scalar();
@@ -3399,7 +3399,7 @@ try {
 }
 CVAPI(Scalar_t*)   pCvtrace(Mat_t* mtx)
 {
-    Scalar_t*  retval = new Scalar_t;
+    Scalar_t*  retval = new Scalar_t();
 try { 
     Scalar tr = cv::trace(*mtx->v);
     Scalar*  t = new Scalar();
