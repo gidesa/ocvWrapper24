@@ -1,3 +1,3 @@
  { --------------- this const defines the debug DLL directory ----------
    --------------- used to debug DLL inside Visual C++ debugger --------}
- DLL_DIR = 'D:\GDS\progC\ocvWrapper\bin\Debug\x86\';
+ DLL_DIR = 'C:\ocvWrapper\bin\Debug\x86\';
