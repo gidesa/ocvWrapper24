@@ -428,18 +428,19 @@ PCvMomentsS = ^CvMomentsS;
 {$INCLUDE   'unOcvWrapper_functions.pas'}
 
 
-// The more frequent default values in functions and methods arguments,
-// that are defined as classes instance. They are defined here to help
-// calling ocvWrapper functions
-// Example:
-// Procedure  pCvaccumulate(src: PCvMat_t; dst: PCvMat_t; mask: PCvMat_t { default: Mat() });
-// can be called as:
-//   pCvaccumulate(src, dst, pCvDefaultMat);
-// Example:
-// Procedure  pCvpyrUp(src: PCvMat_t; dst: PCvMat_t; dstsize: PCvSize_t { default: Size() };
-//                          borderType: Integer { default: BORDER_DEFAULT });
-// can be called as:
-//   pCvpyrUp(src, dst, pCvDefaultSize, BORDER_DEFAULT );
+{  Here are the more frequent default values in functions and methods arguments,
+   that are defined as classes instance. They are defined here to help
+   calling ocvWrapper functions.
+   Example:
+   Procedure  pCvaccumulate(src: PCvMat_t; dst: PCvMat_t; mask: PCvMat_t (* default: Mat() *));
+   can be called as:
+     pCvaccumulate(src, dst, pCvDefaultMat);
+   Example:
+   Procedure  pCvpyrUp(src: PCvMat_t; dst: PCvMat_t; dstsize: PCvSize_t (* default: Size() *);
+                            borderType: Integer (* default: BORDER_DEFAULT *));
+   can be called as:
+     pCvpyrUp(src, dst, pCvDefaultSize, BORDER_DEFAULT );
+}
 
 
 var
@@ -448,61 +449,67 @@ var
   pCvDefaultPoint:  PCvPoint_t;
   pCvPoint_1_1:     PCvPoint_t;   // Point(-1,-1)
   pCvDefaultScalar: PCvScalar_t;
+
+
 {-----------------------------------------------------------------------------------------------}
 implementation
-
  {$IFDEF FPC}
  uses SysUtils, Math;
  {$ELSE}
- uses System.SysUtils, Math;
+ uses System.SysUtils,  System.Math;
  {$ENDIF}
  const
- {$IFDEF DEBUG}
- ocvWrapper = 'D:\GDS\progC\ocvWrapper\bin\Debug\x86\ocvCPPWrapper24.dll';
+ {$IFDEF DEBUGDLL}
+    {$INCLUDE 'debug_DLL_dir.inc'}
  {$ELSE}
- ocvWrapper = 'ocvCPPWrapper24.dll';
+ DLL_DIR = '';
  {$ENDIF}
- function   pCvRedirectException;         external ocvWrapper name 'pCvRedirectException';
- procedure  pCvDrawMatches;               external ocvWrapper name 'pCvDrawMatches';
- procedure  pCvPCACompute2;               external ocvWrapper name 'pCvPCACompute2';
 
- function   pCvStringCreate;              external ocvWrapper name 'pCvStringCreate';
- procedure  pCvStringDelete;              external ocvWrapper name 'pCvStringDelete';
+ ocvWrapper = DLL_DIR + 'ocvCPPWrapper24.dll';
 
- function   pCvMatCreate;                 external ocvWrapper name 'pCvMatCreate';
- function   pCvMat2dCreate;               external ocvWrapper name 'pCvMat2dCreate';
- function   pCvMatCreateEmpty;            external ocvWrapper name 'pCvMatCreateEmpty';
- function   pCvMatImageCreate;            external ocvWrapper name 'pCvMatImageCreate';
- procedure  pCvMatDelete;                 external ocvWrapper name 'pCvMatDelete';
- function   pCvMatROI;                    external ocvWrapper name 'pCvMatROI';
- procedure  pCvMatCopy;                   external ocvWrapper name 'pCvMatCopy';
- procedure  pCvMatFill;                   external ocvWrapper name 'pCvMatFill';
- function   pCvMatGetByte;                external ocvWrapper name 'pCvMatGetByte';
- function   pCvMatSetByte;                external ocvWrapper name 'pCvMatSetByte';
- function   pCvMatGetInt;                 external ocvWrapper name 'pCvMatGetInt';
- function   pCvMatSetInt;                 external ocvWrapper name 'pCvMatSetInt';
- function   pCvMatGetFloat;               external ocvWrapper name 'pCvMatGetFloat';
- function   pCvMatSetFloat;               external ocvWrapper name 'pCvMatSetFloat';
- function   pCvMatGetFloatMultidim;       external ocvWrapper name 'pCvMatGetFloatMultidim';
- function   pCvMatSetFloatMultidim;       external ocvWrapper name 'pCvMatSetFloatMultidim';
- function   pCvMatGetDouble;              external ocvWrapper name 'pCvMatGetDouble';
- function   pCvMatSetDouble;              external ocvWrapper name 'pCvMatSetDouble';
- function   pCvMatGetPixelC3;             external ocvWrapper name 'pCvMatGetPixelC3';
- function   pCvMatSetPixelC3;             external ocvWrapper name 'pCvMatSetPixelC3';
- function   pCvMatGetWidth;               external ocvWrapper name 'pCvMatGetWidth';
- function   pCvMatGetHeight;              external ocvWrapper name 'pCvMatGetHeight';
- function   pCvMatGetChannels;            external ocvWrapper name 'pCvMatGetChannels';
- function   pCvMatGetType;                external ocvWrapper name 'pCvMatGetType';
- function   pCvMatGetDims;                external ocvWrapper name 'pCvMatGetDims';
- function   pCvMatGetData;                external ocvWrapper name 'pCvMatGetData';
- function   pCvMatGetDepth;               external ocvWrapper name 'pCvMatGetDepth';
- procedure  pCvIplImageToMat;             external ocvWrapper name 'pCvIplImageToMat';
- function   pCvMatToIplImage;             external ocvWrapper name 'pCvMatToIplimage';
- procedure  pCvIplImageDelete;            external ocvWrapper name 'pCvIplImageDelete';
+
+ function   pCvRedirectException;         external ocvWrapper  name 'pCvRedirectException';
+ procedure  pCvDrawMatches;               external ocvWrapper  name 'pCvDrawMatches';
+ procedure  pCvPCACompute2;               external ocvWrapper  name 'pCvPCACompute2';
+
+ function   pCvStringCreate;              external ocvWrapper  name 'pCvStringCreate';
+ procedure  pCvStringDelete;              external ocvWrapper  name 'pCvStringDelete';
+
+ function   pCvMatCreate;                 external ocvWrapper  name 'pCvMatCreate';
+ function   pCvMat2dCreate;               external ocvWrapper  name 'pCvMat2dCreate';
+ function   pCvMatCreateEmpty;            external ocvWrapper  name 'pCvMatCreateEmpty';
+ function   pCvMatImageCreate;            external ocvWrapper  name 'pCvMatImageCreate';
+ procedure  pCvMatDelete;                 external ocvWrapper  name 'pCvMatDelete';
+ function   pCvMatROI;                    external ocvWrapper  name 'pCvMatROI';
+ procedure  pCvMatCopy;                   external ocvWrapper  name 'pCvMatCopy';
+ procedure  pCvMatFill;                   external ocvWrapper  name 'pCvMatFill';
+ function   pCvMatGetByte;                external ocvWrapper  name 'pCvMatGetByte';
+ function   pCvMatSetByte;                external ocvWrapper  name 'pCvMatSetByte';
+ function   pCvMatGetInt;                 external ocvWrapper  name 'pCvMatGetInt';
+ function   pCvMatSetInt;                 external ocvWrapper  name 'pCvMatSetInt';
+ function   pCvMatGetFloat;               external ocvWrapper  name 'pCvMatGetFloat';
+ function   pCvMatSetFloat;               external ocvWrapper  name 'pCvMatSetFloat';
+ function   pCvMatGetFloatMultidim;       external ocvWrapper  name 'pCvMatGetFloatMultidim';
+ function   pCvMatSetFloatMultidim;       external ocvWrapper  name 'pCvMatSetFloatMultidim';
+ function   pCvMatGetDouble;              external ocvWrapper  name 'pCvMatGetDouble';
+ function   pCvMatSetDouble;              external ocvWrapper  name 'pCvMatSetDouble';
+ function   pCvMatGetPixelC3;             external ocvWrapper  name 'pCvMatGetPixelC3';
+ function   pCvMatSetPixelC3;             external ocvWrapper  name 'pCvMatSetPixelC3';
+ function   pCvMatGetWidth;               external ocvWrapper  name 'pCvMatGetWidth';
+ function   pCvMatGetHeight;              external ocvWrapper  name 'pCvMatGetHeight';
+ function   pCvMatGetChannels;            external ocvWrapper  name 'pCvMatGetChannels';
+ function   pCvMatGetType;                external ocvWrapper  name 'pCvMatGetType';
+ function   pCvMatGetDims;                external ocvWrapper  name 'pCvMatGetDims';
+ function   pCvMatGetData;                external ocvWrapper  name 'pCvMatGetData';
+ function   pCvMatGetDepth;               external ocvWrapper  name 'pCvMatGetDepth';
+ procedure  pCvIplImageToMat;             external ocvWrapper  name 'pCvIplImageToMat';
+ function   pCvMatToIplImage;             external ocvWrapper  name 'pCvMatToIplimage';
+ procedure  pCvIplImageDelete;            external ocvWrapper  name 'pCvIplImageDelete';
 
 
 {$INCLUDE 'unOcvWrapper_nativeClasses_extern.pas'}
 {$INCLUDE 'unOcvWrapper_extern.pas'}
+
 
 
 procedure cvException(msg: PCvString_t); cdecl;
@@ -625,7 +632,6 @@ BEGIN
 
     lazImg.LoadFromBitmap(bitmap.BitmapHandle, bitmap.MaskHandle);
 {$endif}
-    // origin BL = Bottom-Left
     if (iplImg.ChannelSeq = 'BGR')
         and (iplimg.Origin = IPL_ORIGIN_BL) then
     begin
@@ -719,7 +725,6 @@ BEGIN
 {$ifdef LCL}
     lazImg := TLazIntfImage.Create(bitmap.Width, bitmap.Height);
     lazImg.LoadFromBitmap(bitmap.Handle, bitmap.MaskHandle);
-//    RowIn  := lazImg.GetDataLineStart(bitmap.height -1 );
       FOR j := 0 TO Bitmap.Height-1 DO
       BEGIN
         RowIn  := lazImg.GetDataLineStart(j );
@@ -764,19 +769,26 @@ end;
 {****************************************************************************}
 initialization
 begin
-    pCvRedirectException(@cvexception);
+    try
+      pCvRedirectException(@cvexception);
 
-    // For some Opencv functions Freepascal require to set
-    // Floating Point Unit exception mask to disable some exceptions generated
-    // from C++
+      // For some Opencv functions Freepascal require to set
+      // Floating Point Unit exception mask to disable some exceptions generated
+      // from C++
+      pCvDefaultMat:=pCvMatCreateEmpty();
+      pCvDefaultSize:=pCvSizeCreate();
+      pCvDefaultPoint:=pCvPointCreate();
+      pCvPoint_1_1:=CvPoint_(-1,-1);
+      pCvDefaultScalar:=pCvScalarCreate();
+    except
+      begin
+          Halt(99);
+      end;
+    end;
+
 {$IFDEF FPC}
     SetExceptionMask(GetExceptionMask + [exOverflow,exZeroDivide,exInvalidOp]);
 {$ENDIF}
-  pCvDefaultMat:=pCvMatCreateEmpty();
-  pCvDefaultSize:=pCvSizeCreate();
-  pCvDefaultPoint:=pCvPointCreate();
-  pCvPoint_1_1:=CvPoint_(-1,-1);
-  pCvDefaultScalar:=pCvScalarCreate();
 
 end;
 
