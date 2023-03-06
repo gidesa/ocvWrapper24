@@ -538,7 +538,7 @@ float                       pCvKeyPointGet_response(KeyPoint_t* p);
 void                      pCvKeyPointSet_response(KeyPoint_t* p, float val);
 float                       pCvKeyPointGet_size(KeyPoint_t* p);
 void                      pCvKeyPointSet_size(KeyPoint_t* p, float val);
-void                      pCvMSERdetect(struct  MSER_t* wrapper, Mat_t* image, vector_KeyPoint* keypoints, Mat_t* mask /* default: Mat() */);
+void                      pCvMSERdetect(struct  MSER_t* wrapper, Mat_t* image, vector_vector_Point* msers, Mat_t* mask /* default: Mat() */);
 void                      pCvORBcompute(struct  ORB_t* wrapper, Mat_t* image, vector_KeyPoint* keypoints, Mat_t* descriptors);
 void                      pCvORBdetect(struct  ORB_t* wrapper, Mat_t* image, vector_KeyPoint* keypoints, Mat_t* mask /* default: Mat() */);
 void                      pCvORBdetectAndCompute(struct  ORB_t* wrapper, Mat_t* image, Mat_t* mask, vector_KeyPoint* keypoints, Mat_t* descriptors, bool useProvidedKeypoints /* default: false */);
@@ -602,7 +602,7 @@ float                       pCvSimpleBlobDetector_ParamsGet_minThreshold(SimpleB
 void                      pCvSimpleBlobDetector_ParamsSet_minThreshold(SimpleBlobDetector_Params_t* p, float val);
 float                       pCvSimpleBlobDetector_ParamsGet_thresholdStep(SimpleBlobDetector_Params_t* p);
 void                      pCvSimpleBlobDetector_ParamsSet_thresholdStep(SimpleBlobDetector_Params_t* p, float val);
-void                      pCvStarDetectordetect(struct  StarDetector_t* wrapper, Mat_t* image, vector_KeyPoint* keypoints, Mat_t* mask /* default: Mat() */);
+void                      pCvStarDetectordetect(struct  StarDetector_t* wrapper, Mat_t* image, vector_KeyPoint* keypoints);
 void                      pCvStereoBMcompute(struct  StereoBM_t* wrapper, Mat_t* left, Mat_t* right, Mat_t* disparity, int disptype /* default: CV_16S */);
 void                      pCvStereoSGBMcompute(struct  StereoSGBM_t* wrapper, Mat_t* left, Mat_t* right, Mat_t* disp);
 int                       pCvStereoSGBMGet_P1(StereoSGBM_t* p);

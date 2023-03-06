@@ -4425,11 +4425,11 @@ try {
     return;
 
 }
-CVAPI(void)   pCvMSERdetect(struct  MSER_t* wrapper, Mat_t* image, vector_KeyPoint* keypoints, Mat_t* mask)
+CVAPI(void)   pCvMSERdetect(struct  MSER_t* wrapper, Mat_t* image, vector_vector_Point* msers, Mat_t* mask)
 {
 try {
  
-    wrapper->v->detect(*image->v, *keypoints, *mask->v);
+    wrapper->v->operator ()(*image->v, *msers, *mask->v);
 } catch (std::exception &e) {
       exceptionDisplay(e.what());
 };
@@ -4437,11 +4437,11 @@ try {
     return;
 
 }
-CVAPI(void)   pCvStarDetectordetect(struct  StarDetector_t* wrapper, Mat_t* image, vector_KeyPoint* keypoints, Mat_t* mask)
+CVAPI(void)   pCvStarDetectordetect(struct  StarDetector_t* wrapper, Mat_t* image, vector_KeyPoint* keypoints)
 {
 try {
  
-    wrapper->v->detect(*image->v, *keypoints, *mask->v);
+    wrapper->v->operator ()(*image->v, *keypoints);
 } catch (std::exception &e) {
       exceptionDisplay(e.what());
 };
