@@ -1,8 +1,13 @@
-# ocvWrapper24 v 1.2
+# ocvWrapper24 v 1.3
 
 # A wrapper library around Opencv C++ API for Delphi, Lazarus/Freepascal and C
 
-# NEWS 19/2/2023
+# NEWS 6/3/2023 v 1.3
+
+* Minor fixes
+
+
+# NEWS 19/2/2023 v 1.2
 
 * Added 2 functions for Delphi and Lazarus, they convert Opencv image class (Mat)
    from/to a bitmap image
@@ -12,7 +17,7 @@
 * Fixed a bug in function PCvMatROI
 
 
-# NEWS 6/2/2023
+# NEWS 6/2/2023 v 1.1
 
 * Added 64 bit version of DLL
 * Added more examples for Lazarus/Freepascal
