@@ -76,6 +76,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\bin\$(Configuration)\x64\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -83,6 +84,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\bin\$(Configuration)\x64</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -96,6 +98,7 @@
       <AdditionalIncludeDirectories>D:\opencv2.4.13.6\sources\modules\core\include;D:\opencv2.4.13.6\sources\modules\flann\include;D:\opencv2.4.13.6\sources\modules\ml\include;D:\opencv2.4.13.6\sources\modules\imgproc\include;D:\opencv2.4.13.6\sources\modules\calib3d\include;D:\opencv2.4.13.6\sources\modules\features2d\include;D:\opencv2.4.13.6\sources\modules\video\include;D:\opencv2.4.13.6\sources\modules\photo\include;D:\opencv2.4.13.6\sources\modules\objdetect\include;D:\opencv2.4.13.6\sources\modules\contrib\include;D:\opencv2.4.13.6\sources\modules\highgui\include;D:\opencv2.4.13.6\sources\modules\nonfree\include</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -106,24 +109,30 @@
       <MapExports>false</MapExports>
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)$(PlatformTarget)\$(TargetName)$(TargetExt)</OutputFile>
-      <ProgramDatabaseFile>..\..\bin\$(Configuration)\$(ProcessorArchitecture)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(PlatformTarget)\$(TargetName).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)$(PlatformTarget)\$(TargetName).lib</ImportLibrary>
+      <Version>
+      </Version>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;OCVCPPWRAPPER24_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>D:\opencv2.4.13.6\sources\modules\core\include;D:\opencv2.4.13.6\sources\modules\flann\include;D:\opencv2.4.13.6\sources\modules\ml\include;D:\opencv2.4.13.6\sources\modules\imgproc\include;D:\opencv2.4.13.6\sources\modules\calib3d\include;D:\opencv2.4.13.6\sources\modules\features2d\include;D:\opencv2.4.13.6\sources\modules\video\include;D:\opencv2.4.13.6\sources\modules\photo\include;D:\opencv2.4.13.6\sources\modules\objdetect\include;D:\opencv2.4.13.6\sources\modules\contrib\include;D:\opencv2.4.13.6\sources\modules\highgui\include;D:\opencv2.4.13.6\sources\modules\nonfree\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt) </OutputFile>
+      <AdditionalLibraryDirectories>D:\opencv2.4.13.6\build\x64\vc14\lib </AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opencv_calib3d2413d.lib;opencv_contrib2413d.lib;opencv_core2413d.lib;opencv_features2d2413d.lib;opencv_flann2413d.lib;opencv_gpu2413d.lib;opencv_highgui2413d.lib;opencv_imgproc2413d.lib;opencv_legacy2413d.lib;opencv_ml2413d.lib;opencv_nonfree2413d.lib;opencv_objdetect2413d.lib;opencv_ocl2413d.lib;opencv_photo2413d.lib;opencv_stitching2413d.lib;opencv_superres2413d.lib;opencv_ts2413d.lib;opencv_video2413d.lib;opencv_videostab2413d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -154,7 +163,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -163,6 +172,7 @@
       <PreprocessorDefinitions>NDEBUG;OCVCPPWRAPPER24_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>D:\opencv2.4.13.6\sources\modules\core\include;D:\opencv2.4.13.6\sources\modules\flann\include;D:\opencv2.4.13.6\sources\modules\ml\include;D:\opencv2.4.13.6\sources\modules\imgproc\include;D:\opencv2.4.13.6\sources\modules\calib3d\include;D:\opencv2.4.13.6\sources\modules\features2d\include;D:\opencv2.4.13.6\sources\modules\video\include;D:\opencv2.4.13.6\sources\modules\photo\include;D:\opencv2.4.13.6\sources\modules\objdetect\include;D:\opencv2.4.13.6\sources\modules\contrib\include;D:\opencv2.4.13.6\sources\modules\highgui\include;D:\opencv2.4.13.6\sources\modules\nonfree\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -170,6 +180,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>D:\opencv2.4.13.6\build\x64\vc14\lib  </AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opencv_calib3d2413.lib;opencv_contrib2413.lib;opencv_core2413.lib;opencv_features2d2413.lib;opencv_flann2413.lib;opencv_gpu2413.lib;opencv_highgui2413.lib;opencv_imgproc2413.lib;opencv_legacy2413.lib;opencv_ml2413.lib;opencv_nonfree2413.lib;opencv_objdetect2413.lib;opencv_ocl2413.lib;opencv_photo2413.lib;opencv_stitching2413.lib;opencv_superres2413.lib;opencv_ts2413.lib;opencv_video2413.lib;opencv_videostab2413.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -186,6 +198,7 @@
     <ClInclude Include="..\..\source\ocvWrp_nativeTypes_signatures.h" />
     <ClInclude Include="..\..\source\ocwWrp_nativeClasses_signatures.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
@@ -193,6 +206,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\source\dllmain.cpp" />
     <ClCompile Include="..\..\source\wrapper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
