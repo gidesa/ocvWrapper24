@@ -415,7 +415,7 @@ Function   pCvKeyPointGet_response(const wrapper: PCvKeyPoint_t): Single; cdecl;
 Procedure  pCvKeyPointSet_response(const wrapper: PCvKeyPoint_t; val: Single); cdecl;
 Function   pCvKeyPointGet_size(const wrapper: PCvKeyPoint_t): Single; cdecl;
 Procedure  pCvKeyPointSet_size(const wrapper: PCvKeyPoint_t; val: Single); cdecl;
-Procedure  pCvMSERdetect(const wrapper: PCvMSER_t; image: PCvMat_t; keypoints: PCvvector_KeyPoint; mask: PCvMat_t { default: Mat() }); cdecl;
+Procedure  pCvMSERdetect(const wrapper: PCvMSER_t; image: PCvMat_t; msers: PCvvector_vector_Point; mask: PCvMat_t { default: Mat() }); cdecl;
 Procedure  pCvORBcompute(const wrapper: PCvORB_t; image: PCvMat_t; keypoints: PCvvector_KeyPoint; descriptors: PCvMat_t); cdecl;
 Procedure  pCvORBdetect(const wrapper: PCvORB_t; image: PCvMat_t; keypoints: PCvvector_KeyPoint; mask: PCvMat_t { default: Mat() }); cdecl;
 Procedure  pCvORBdetectAndCompute(const wrapper: PCvORB_t; image: PCvMat_t; mask: PCvMat_t; keypoints: PCvvector_KeyPoint; descriptors: PCvMat_t; useProvidedKeypoints: Boolean { default: false }); cdecl;
@@ -479,7 +479,7 @@ Function   pCvSimpleBlobDetector_ParamsGet_minThreshold(const wrapper: PCvSimple
 Procedure  pCvSimpleBlobDetector_ParamsSet_minThreshold(const wrapper: PCvSimpleBlobDetector_Params_t; val: Single); cdecl;
 Function   pCvSimpleBlobDetector_ParamsGet_thresholdStep(const wrapper: PCvSimpleBlobDetector_Params_t): Single; cdecl;
 Procedure  pCvSimpleBlobDetector_ParamsSet_thresholdStep(const wrapper: PCvSimpleBlobDetector_Params_t; val: Single); cdecl;
-Procedure  pCvStarDetectordetect(const wrapper: PCvStarDetector_t; image: PCvMat_t; keypoints: PCvvector_KeyPoint; mask: PCvMat_t { default: Mat() }); cdecl;
+Procedure  pCvStarDetectordetect(const wrapper: PCvStarDetector_t; image: PCvMat_t; keypoints: PCvvector_KeyPoint); cdecl;
 Procedure  pCvStereoBMcompute(const wrapper: PCvStereoBM_t; left: PCvMat_t; right: PCvMat_t; disparity: PCvMat_t; disptype: Integer { default: CV_16S }); cdecl;
 Procedure  pCvStereoSGBMcompute(const wrapper: PCvStereoSGBM_t; left: PCvMat_t; right: PCvMat_t; disp: PCvMat_t); cdecl;
 Function   pCvStereoSGBMGet_P1(const wrapper: PCvStereoSGBM_t): Integer; cdecl;
