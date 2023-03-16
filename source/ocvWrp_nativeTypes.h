@@ -196,19 +196,7 @@ struct CvMomentsS
 
 
 
-//  cv::Mat
-// convertto
-// cross
-// diag
-// dot 
-// getelementssize
-// getsizeofdimension
-// getstep
-// isempty
-// issubmatrix
-// reshape
-// T (transposta?)
-// total
+
 
 
 

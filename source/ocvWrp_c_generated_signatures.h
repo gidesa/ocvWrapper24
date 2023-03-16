@@ -187,7 +187,7 @@ struct  HOGDescriptor_t*  pCvHOGDescriptorCreate2(Size_t* _winSize, Size_t* _blo
 struct  HOGDescriptor_t*  pCvHOGDescriptorCreate3(string_t* filename);
 void                      pCvHOGDescriptorDelete(struct HOGDescriptor_t* wrapper);
 struct  flann_Index_t*    pCvflann_IndexCreate();
-struct  flann_Index_t*    pCvflann_IndexCreate2(Mat_t* features, IndexParams_t* params, cvflann_flann_distance_t distType /* default: cvflann::FLANN_DIST_L2 */);
+struct  flann_Index_t*    pCvflann_IndexCreate2(Mat_t* features, IndexParams_t* params, int distType /* default: cvflann::FLANN_DIST_L2 */);
 void                      pCvflann_IndexDelete(struct flann_Index_t* wrapper);
 struct  KDTree_t*         pCvKDTreeCreate();
 struct  KDTree_t*         pCvKDTreeCreate2(Mat_t* points, bool copyAndReorderPoints /* default: false */);
@@ -680,9 +680,9 @@ bool                      pCvVideoWriterisOpened(struct  VideoWriter_t* wrapper)
 bool                      pCvVideoWriteropen(struct  VideoWriter_t* wrapper, string_t* filename, int fourcc, double fps, Size_t* frameSize, bool isColor /* default: true */);
 void                      pCvVideoWriterrelease(struct  VideoWriter_t* wrapper);
 void                      pCvVideoWriterwrite(struct  VideoWriter_t* wrapper, Mat_t* image);
-void                      pCvflann_Indexbuild(struct  flann_Index_t* wrapper, Mat_t* wholefeatures, Mat_t* additionalfeatures, IndexParams_t* params, cvflann_flann_distance_t distType /* default: cvflann::FLANN_DIST_L2 */);
-cvflann_flann_algorithm_t pCvflann_IndexgetAlgorithm(struct  flann_Index_t* wrapper);
-cvflann_flann_distance_t  pCvflann_IndexgetDistance(struct  flann_Index_t* wrapper);
+void                      pCvflann_Indexbuild(struct  flann_Index_t* wrapper, Mat_t* wholefeatures, Mat_t* additionalfeatures, IndexParams_t* params, int distType /* default: cvflann::FLANN_DIST_L2 */);
+int                       pCvflann_IndexgetAlgorithm(struct  flann_Index_t* wrapper);
+int                       pCvflann_IndexgetDistance(struct  flann_Index_t* wrapper);
 void                      pCvflann_IndexknnSearch(struct  flann_Index_t* wrapper, Mat_t* query, Mat_t* indices, Mat_t* dists, int knn, SearchParams_t* params /* default: SearchParams() */);
 bool                      pCvflann_Indexload(struct  flann_Index_t* wrapper, Mat_t* features, string_t* filename);
 int                       pCvflann_IndexradiusSearch(struct  flann_Index_t* wrapper, Mat_t* query, Mat_t* indices, Mat_t* dists, double radius, int maxResults, SearchParams_t* params /* default: SearchParams() */);

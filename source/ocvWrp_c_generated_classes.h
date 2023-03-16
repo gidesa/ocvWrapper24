@@ -6737,7 +6737,7 @@ try {
     return;
 
 }
-CVAPI(cvflann_flann_algorithm_t)   pCvflann_IndexgetAlgorithm(struct  flann_Index_t* wrapper)
+CVAPI(int)   pCvflann_IndexgetAlgorithm(struct  flann_Index_t* wrapper)
 {
     cvflann_flann_algorithm_t retval;
 try {
@@ -6750,7 +6750,7 @@ try {
     return (retval);
 
 }
-CVAPI(cvflann_flann_distance_t)   pCvflann_IndexgetDistance(struct  flann_Index_t* wrapper)
+CVAPI(int)   pCvflann_IndexgetDistance(struct  flann_Index_t* wrapper)
 {
     cvflann_flann_distance_t retval;
 try {
