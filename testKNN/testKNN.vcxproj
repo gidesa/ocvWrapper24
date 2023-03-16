@@ -94,7 +94,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\opencv2.4.13.6\sources\modules\core\include;D:\opencv2.4.13.6\sources\modules\flann\include;D:\opencv2.4.13.6\sources\modules\ml\include;D:\opencv2.4.13.6\sources\modules\imgproc\include;D:\opencv2.4.13.6\sources\modules\calib3d\include;D:\opencv2.4.13.6\sources\modules\features2d\include;D:\opencv2.4.13.6\sources\modules\video\include;D:\opencv2.4.13.6\sources\modules\photo\include;D:\opencv2.4.13.6\sources\modules\objdetect\include;D:\opencv2.4.13.6\sources\modules\contrib\include;D:\opencv2.4.13.6\sources\modules\highgui\include;D:\opencv2.4.13.6\sources\modules\nonfree\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,6 +119,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\bin\Debug\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ocvCPPWrapper24.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -131,7 +134,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\opencv2.4.13.6\sources\modules\core\include;D:\opencv2.4.13.6\sources\modules\flann\include;D:\opencv2.4.13.6\sources\modules\ml\include;D:\opencv2.4.13.6\sources\modules\imgproc\include;D:\opencv2.4.13.6\sources\modules\calib3d\include;D:\opencv2.4.13.6\sources\modules\features2d\include;D:\opencv2.4.13.6\sources\modules\video\include;D:\opencv2.4.13.6\sources\modules\photo\include;D:\opencv2.4.13.6\sources\modules\objdetect\include;D:\opencv2.4.13.6\sources\modules\contrib\include;D:\opencv2.4.13.6\sources\modules\highgui\include;D:\opencv2.4.13.6\sources\modules\nonfree\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,6 +165,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\bin\Release\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ocvCPPWrapper24.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

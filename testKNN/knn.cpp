@@ -10,15 +10,19 @@
 // Copyright (c) 2022 Giandomenico De Sanctis
 // Converted to use OpenCV 2.4 pure C wrapper library
 
+#define  _CRT_SECURE_NO_WARNINGS  1
 
 
-#include  "opencv2/contrib/contrib.hpp"
 
-using namespace cv;            // OpenCV API is in the C++ "cv" namespace
 
 #include <cstdio>
+#include <corecrt_math.h>
+#include <float.h>
+
+
 using namespace std;
 
+#include "..\source\ocvWrp_c_generated_const.h"
 #include "..\source\ocvWrp_nativeTypes_signatures.h"
 #include "..\source\ocvWrp_c_generated_signatures.h"
 #include "..\source\ocwWrp_nativeClasses_signatures.h"
@@ -46,7 +50,7 @@ int read_data_from_csv(const char* filename, Mat_t** data, Mat_t** responses, in
 
 int main( int argc, char** argv )
 {
-    // define data set objects
+	// define data set objects
 
         Mat_t* training_data = 0;
         Mat_t* testing_data  = 0 ;
