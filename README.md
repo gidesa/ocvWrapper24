@@ -1,6 +1,11 @@
-# ocvWrapper24 v 1.3
+# ocvWrapper24 v 1.3.1
 
 # A wrapper library around Opencv C++ API for Delphi, Lazarus/Freepascal and C
+
+# NEWS 16/3/2023 v 1.3.1
+
+* Fixed some bugs on C signatures files 
+* Improved TestKNN example
 
 # NEWS 6/3/2023 v 1.3
 
