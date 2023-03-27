@@ -1,3 +1,4 @@
+![OCV24LOGO](OCV24-LOGO.png)
 # ocvWrapper24 v 1.3.1
 
 # A wrapper library around Opencv C++ API for Delphi, Lazarus/Freepascal and C
